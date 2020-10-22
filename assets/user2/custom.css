@@ -1,0 +1,145 @@
+/* body{
+    font-family: 'Raleway', sans-serif;
+    background: #E9ECE9;
+  }
+  .comments-main{
+    background: #FFF;
+  }
+  .comment time, .comment:hover time,.icon-rocknroll, .like-count {
+    -webkit-transition: .25s opacity linear;
+    transition: .25s opacity linear;
+  }
+  .comments-main ul li{
+    list-style: none;
+  }
+  .comments .comment {
+    padding: 5px 10px;
+    background: #00AF90;
+  }
+  .comments .comment:hover time{
+    opacity: 1;
+  }
+  .comments .user-img img {
+    width: 50px;
+    height: 50px;
+  }
+  .comments .comment h4 {
+    display: inline-block;
+    font-size: 16px;
+  }
+  .comments .comment h4 a {
+    color: #404040;
+    text-decoration: none;
+  }
+  .comments .comment .icon-rocknroll {
+    color: #545454;
+    font-size: .85rem;
+  }
+  .comments .comment .icon-rocknroll:hover {
+    opacity: .5;
+  }
+  .comments .comment time,.comments .comment .like-count,.comments .comment .icon-rocknroll {
+    font-size: .75rem;
+    opacity: 0;
+  }
+  .comments .comment time, .comments .comment .like-count {
+    font-weight: 300;
+  }
+  .comments .comment p {
+    font-size: 13px;
+  }
+  .comments .comment p .reply {
+    color: #BFBFA8;
+    cursor: pointer;
+  }
+  .comments .comment .active {
+    opacity: 1;
+  }
+  .icon-rocknroll {
+    background: none;
+    outline: none;
+    cursor: pointer;
+    margin: 0 .125rem 0 0;
+  }
+  .comments .comment:hover .icon-rocknroll,.comments .comment:hover .like-count {
+    opacity: 1;
+  }
+  .comment-box-main{
+    background: #CA1D5F;
+  }
+  @media (min-width: 320px) and (max-width: 480px){
+    .comments .comment h4 {
+      font-size: 12px;
+    }
+    .comments .comment p{
+      font-size: 11px;
+    }
+    .comment-box-main .send-btn button{
+      margin-left: 5px;
+    }
+  } */
+
+
+
+  .chat
+{
+    margin-left:20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li
+{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body
+{
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body
+{
+    margin-right: 60px;
+}
+
+
+.chat li .chat-body p
+{
+    margin: 0;
+    color: #777777;
+}
+
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
+}
+
+.panel-body
+{
+    padding-bottom:0;
+    /* overflow-y: scroll; */
+    height: 530px;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 20px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
