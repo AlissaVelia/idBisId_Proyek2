@@ -17,50 +17,58 @@ class lembaga extends CI_Controller {
     {
         $data['title'] = 'Dashboard - idBisid';
         $this->load->view('template/lembaga/header_lembaga',$data);
+        $this->load->view('template/lembaga/sidebar_lembaga');
         $this->load->view('lembaga/index',$data);
-        $this->load->view('template/lembaga/footer_lembaga');
+        //$this->load->view('template/lembaga/footer_lembaga');
+        
     }
     public function data_lembaga()
     {
         $data['title'] = 'Dashboard - idBisid';
         $this->load->view('template/lembaga/header_lembaga',$data);
+        $this->load->view('template/lembaga/sidebar_lembaga',$data);
         $this->load->view('lembaga/data_lembaga',$data);
-        $this->load->view('template/lembaga/footer_lembaga');
+        //$this->load->view('template/lembaga/footer_lembaga');
     }
     public function kategori_pelatihan()
     {
         $data['title'] = 'Dashboard - idBisid';
         $this->load->view('template/lembaga/header_lembaga',$data);
+        $this->load->view('template/lembaga/sidebar_lembaga',$data);
         $this->load->view('lembaga/kategori_pelatihan',$data);
-        $this->load->view('template/lembaga/footer_lembaga');
+        //$this->load->view('template/lembaga/footer_lembaga');
     }
     public function materi_pelatihan()
     {
         $data['title'] = 'Dashboard - idBisid';
         $this->load->view('template/lembaga/header_lembaga',$data);
+        $this->load->view('template/lembaga/sidebar_lembaga',$data);
         $this->load->view('lembaga/materi_pelatihan',$data);
-        $this->load->view('template/lembaga/footer_lembaga');
+        //$this->load->view('template/lembaga/footer_lembaga');
     }
     public function edit_data()
     {
         $data['title'] = 'Dashboard - idBisid';
         $this->load->view('template/lembaga/header_lembaga',$data);
+        $this->load->view('template/lembaga/sidebar_lembaga',$data);
         $this->load->view('lembaga/edit_datalembaga',$data);
-        $this->load->view('template/lembaga/footer_lembaga');
+        //$this->load->view('template/lembaga/footer_lembaga');
     }
     public function tambah_kategori()
     {
         $data['title'] = 'Dashboard - idBisid';
         $this->load->view('template/lembaga/header_lembaga',$data);
+        $this->load->view('template/lembaga/sidebar_lembaga',$data);
         $this->load->view('lembaga/tambah_kategori',$data);
-        $this->load->view('template/lembaga/footer_lembaga');
+        //$this->load->view('template/lembaga/footer_lembaga');
     }
     public function tambah_materi()
     {
         $data['title'] = 'Dashboard - idBisid';
         $this->load->view('template/lembaga/header_lembaga',$data);
+        $this->load->view('template/lembaga/sidebar_lembaga',$data);
         $this->load->view('lembaga/tambah_materi',$data);
-        $this->load->view('template/lembaga/footer_lembaga');
+        //$this->load->view('template/lembaga/footer_lembaga');
     }
 }
 
