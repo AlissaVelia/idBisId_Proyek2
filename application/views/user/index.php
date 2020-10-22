@@ -19,7 +19,7 @@
           <div class="col-10 col-xl-10 d-none d-xl-block">
             <nav class="site-navigation text-right" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="<?=base_url()?>/user/index">Beranda</a></li>
+                <li class="active"><a href="<?=base_url()?>user/index">Beranda</a></li>
                 <li>
                   <a href="<?=base_url()?>/user/ide_bisnis">Ide Bisnis</a>
                 </li>
@@ -58,7 +58,7 @@
               <!-- PENCARIAN IDE -->
               <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
-                  <form action="#" method="post">
+                  <form action="" method="post">
                     <div class="row">
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                         <input type="text" class="form-control" placeholder="Contoh : Ternak Lele">
@@ -66,22 +66,22 @@
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                         <div class="select-wrap">
                           <span class="icon-keyboard_arrow_down arrow-down"></span>
-                          <select name="" id="" class="form-control">
+                          <select name="kategori" id="kategori" class="form-control">
                             <option value="">Kategori</option>
-                            <option value="fulltime">Semua Kategori</option>
-                            <option value="fulltime">Kuliner</option>
-                            <option value="fulltime">Travelling</option>
-                            <option value="freelance">Penjualan</option>
-                            <option value="internship">Peternakan</option>
+                            <option value="Kuliner">Kuliner</option>
+                            <option value="Travelling">Travelling</option>
+                            <option value="Penjualan">Penjualan</option>
+                            <option value="Peternakan">Peternakan</option>
                           </select>
                         </div>
                       </div>
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="text" class="form-control" placeholder="Siapa Pemilik Ide?">
+                        <input type="text" class="form-control" name="oleh" id="oleh" placeholder="Siapa Pemilik Ide?">
                       </div>
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="submit" class="btn btn-primary btn-block" value="Search">
+                        <input type="submit" class="btn btn-primary btn-block" value="Cari">
                       </div>
+                      
                     </div>
                   </form>
                 </div>
@@ -136,40 +136,16 @@
         </div>
         <div class="row">
         <!-- 1 -->
+        <?php foreach ($ide_bisnis as $ide) :?>
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
             <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
+            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded"></a>
+            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user"><?= $ide['oleh'];?></a><span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
+            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black"><?= $ide['judul'];?></a></h2>
+            <p><?= $ide['deskripsi'];?></p>
             </div>
           </div>
-          <!-- 2 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
-          </div>
-          <!-- 3 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_3.jpg" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
-          </div>
-          <!-- 4 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_4.jpg" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
+        <?php endforeach; ?>
           </div>
         </div>
       </div>

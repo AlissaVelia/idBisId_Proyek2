@@ -16,10 +16,29 @@ class user extends CI_Controller {
     public function index()
     {
         $data['title'] = 'Beranda - idBisid';
+
+        $data['ide_bisnis']=$this->user_model->tampilTopIdeBisnis();
+        
+        if ($this->input->post('kategori, oleh, judul')){
+            $data['ide_bisnis']=$this->user_model->cariIdeBisnis();
+        }
+
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/index',$data);
         $this->load->view('template/user/footer_user');
     }
+
+    // public function cari()
+    // {
+    //     $data['title'] = 'Pencarian - idBisid';
+    //     $data['ide_bisnis']=$this->user_model->cariIdeBisnis();
+
+    //     $this->load->view('template/user/header_user',$data);
+    //     $this->load->view('user/cari',$data);
+    //     $this->load->view('template/user/footer_user');
+
+    //     redirect('cari','refresh');
+    // }
 
     public function kontak() {
         $data['title'] = 'Kontak - idBisid';
