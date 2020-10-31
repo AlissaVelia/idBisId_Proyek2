@@ -18,6 +18,7 @@ class user extends CI_Controller {
         $data['title'] = 'Beranda - idBisid';
 
         $data['ide_bisnis']=$this->user_model->tampilTopIdeBisnis();
+        $data['pelatihan']=$this->user_model->tampilTopPelatihan();
         
         if ($this->input->post('kategori, oleh, judul')){
             $data['ide_bisnis']=$this->user_model->cariIdeBisnis();
@@ -56,16 +57,29 @@ class user extends CI_Controller {
 
     public function ide_bisnis() {
         $data['title'] = 'Ide Bisnis - idBisid';
+        $data['ide_bisnis']=$this->user_model->tampilSemuaIdeBisnis();
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/ide_bisnis',$data);
         $this->load->view('template/user/footer_user');
     }
 
     public function tambah_ide() {
+        $this->load->library('form_validation');
         $data['title'] = 'Tambahkan Ide - idBisid';
-        $this->load->view('template/user/header_user',$data);
-        $this->load->view('user/tambah_ide',$data);
-        $this->load->view('template/user/footer_user');
+        $this->form_validation->set_rules('judul', 'judul', 'required');
+        $this->form_validation->set_rules('foto', 'foto', 'required');
+        $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+        $this->form_validation->set_rules('kategori', 'kategori', 'required');
+        $this->form_validation->set_rules('iduser', 'iduser', 'required');
+        if ($this->form_validation->run()==FALSE){
+            $this->load->view('template/user/header_user',$data);
+            $this->load->view('user/tambah_ide',$data);
+            $this->load->view('template/user/footer_user');
+        }else{
+            $this->user_model->tambahIde();
+            $this->session->set_flashdata('flash-data','ditambahkan');
+            redirect('user','refresh');
+        }
     }
 
     public function detail_ide() {
@@ -77,6 +91,7 @@ class user extends CI_Controller {
 
     public function daftar_pelatihan() {
         $data['title'] = 'Daftar Pelatihan - idBisid';
+        $data['pelatihan']=$this->user_model->tampilSemuaPelatihan();
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/daftar_pelatihan',$data);
         $this->load->view('template/user/footer_user');

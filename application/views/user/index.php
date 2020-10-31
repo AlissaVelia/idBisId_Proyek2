@@ -21,12 +21,12 @@
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="<?=base_url()?>user/index">Beranda</a></li>
                 <li>
-                  <a href="<?=base_url()?>/user/ide_bisnis">Ide Bisnis</a>
+                  <a href="<?=base_url()?>user/ide_bisnis">Ide Bisnis</a>
                 </li>
-                <li><a href="<?=base_url()?>/user/daftar_pelatihan">Pelatihan</a></li>
-                <li><a href="<?=base_url()?>/user/tentang">Tentang</a></li>
-                <li><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
-                <li><a href="<?=base_url()?>/login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a></li>
+                <li><a href="<?=base_url()?>user/daftar_pelatihan">Pelatihan</a></li>
+                <li><a href="<?=base_url()?>user/tentang">Tentang</a></li>
+                <li><a href="<?=base_url()?>user/kontak">Kontak</a></li>
+                <li><a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a></li>
               </ul>
             </nav>
           </div>
@@ -123,7 +123,7 @@
       </div>
     </div>  
     
-    <!-- HOT 12 BUSINESS -->
+    <!-- HOT 10 BUSINESS -->
     <div class="site-section bg-light">
       <div class="container">
         <div class="row justify-content-start text-left mb-5">
@@ -140,7 +140,7 @@
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
             <div class="position-relative unit-8">
             <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user"><?= $ide['oleh'];?></a><span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
+            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user"><?= $ide['oleh'];?></a><span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;<?= $ide['suka'];?></span>
             <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black"><?= $ide['judul'];?></a></h2>
             <p><?= $ide['deskripsi'];?></p>
             </div>
@@ -161,126 +161,25 @@
         </div>
         <div class="row hosting">
         <!-- 1 -->
+        <?php foreach ($pelatihan as $pl) :?>
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="100" >
             <div class="unit-3 h-100 bg-white">
               <div class="d-flex align-items-center mb-3 unit-3-heading">
                 <div class="unit-3-icon-wrap mr-4">
                   <svg class="unit-3-svg" xmlns="<?=base_url()?>/http://www.w3.org/2000/svg" width="59px" height="68px">
                     <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-portfolio23"></span>
-                </div>
-                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan" style="color:black;">Search Millions of Jobs</a></h2>
+                  </svg><span><img src="<?= $pl['logo'];?>"></span>
+                  </div>
+                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan" style="color:black;"><?= $pl['nama_pelatihan'];?></a></h2>
               </div>
               <div class="unit-3-body">
-                <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;">Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</a></p>
+                <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;"><?= $pl['desc'];?></a></p>
               </div>
             </div>
           </div>
-          <!-- 2 -->
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="500">
-            <div class="unit-3 h-100 bg-white">
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="<?=base_url()?>/http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-clipboard68"></span>
-                </div>
-                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan" style="color:black;">Easy To Manage Jobs</a></h2>
-              </div>
-              <div class="unit-3-body">
-                <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;">Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</a></p>
-              </div>
-            </div>
-          </div>
-          <!-- 3 -->
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="600">
-            <div class="unit-3 h-100 bg-white">
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="<?=base_url()?>/http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-user143"></span>
-                </div>
-                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan" style="color:black;">Online Reviews</a></h2>
-              </div>
-              <div class="unit-3-body">
-                <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;">Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</a></p>
-              </div>
-            </div>
-          </div>
+        <?php endforeach; ?>
         </div>
       </div>
     </div>
 
-    <!-- REVIEW -->
-    <div class="site-section block-4 bg-light">
-      <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-          <div class="col-md-6" data-aos="fade" >
-            <h2 class="text-black">- Review -</h2>
-          </div>
-        </div>
-        <div class="nonloop-block-4 owl-carousel" data-aos="fade">
-        <!-- 1 -->
-          <div class="item col-md-8 mx-auto">
-            <div class="block-38 text-center bg-white p-4">
-              <div class="block-38-img">
-                <div class="block-38-header"> 
-                  <img src="<?= base_url()?>/assets/user2/images/person_1.jpg" alt="Image placeholder">
-                  <h3 class="block-38-heading">Elizabeth Graham</h3>
-                  <p class="block-38-subheading">Creative Director, XYG Company</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 2 -->
-          <div class="item col-md-8 mx-auto">
-            <div class="block-38 text-center bg-white p-4">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="<?= base_url()?>/assets/user2/images/person_2.jpg" alt="Image placeholder">
-                  <h3 class="block-38-heading">Jennifer Greive</h3>
-                  <p class="block-38-subheading">Lead Designer, Mig Company</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 3 -->
-          <div class="item col-md-8 mx-auto">
-            <div class="block-38 text-center bg-white p-4">
-              <div class="block-38-img">
-                <div class="block-38-header"> 
-                  <img src="<?= base_url()?>/assets/user2/images/person_1.jpg" alt="Image placeholder">
-                  <h3 class="block-38-heading">Elizabeth Graham</h3>
-                  <p class="block-38-subheading">Creative Director, XYG Company</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 4 -->
-          <div class="item col-md-8 mx-auto">
-            <div class="block-38 text-center bg-white p-4">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="<?= base_url()?>/assets/user2/images/person_2.jpg" alt="Image placeholder">
-                  <h3 class="block-38-heading">Jennifer Greive</h3>
-                  <p class="block-38-subheading">Lead Designer, Mig Company</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    

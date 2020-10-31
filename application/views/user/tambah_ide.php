@@ -46,38 +46,60 @@
     </div>
 
     <!-- FORM PENAMBAHAN -->
+    <?php if(validation_errors()) { ?>
+      <div class="alert alert-danger" role="alert">
+        <?= validation_errors() ?>
+      </div>
+    <?php } ?>
+    <form action="" class="p-5 bg-white" method="post" enctype="multipart/form-data">
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-12 mb-5">
-            <form action="#" class="p-5 bg-white" method="post" enctype="multipart/form-data">
             <h4><strong><center>- Ide Bisnis Anda -</center></strong></h4><br>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Judul Ide Bisnis</label>
-                  <input type="text" id="fullname" class="form-control">
-                </div>
-              </div>
-              <div class="row form-group">
-                <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Deskripsi Ide Bisnis</label>
-                  <textarea name="deskripsi" class="form-control" id="" cols="30" rows="5"></textarea>
+                  <label class="font-weight-bold" form="judul">Judul Ide Bisnis</label>
+                  <input name="judul" type="text" id="judul" class="form-control">
                 </div>
               </div>
               <div class="row form-group mb-5">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Gambar : </label>
-                  <input type="file" id="fullname" class="form-control">
+                  <label class="font-weight-bold" form="foto">Gambar : </label>
+                  <input type="text" name="foto" id="foto" class="form-control">
                   <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                 </div>
               </div>
               <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" form="deskripsi">Deskripsi Ide Bisnis</label>
+                  <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="5"></textarea>
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" form="kategori">Kategori Ide Bisnis</label>
+                          <span class="icon-keyboard_arrow_down arrow-down"></span>
+                          <select name="kategori" id="kategori" class="form-control">
+                            <option value="All Kategori">Kategori</option>
+                            <option value="Kuliner">Kuliner</option>
+                            <option value="Travelling">Travelling</option>
+                            <option value="Penjualan">Penjualan</option>
+                            <option value="Peternakan">Peternakan</option>
+                          </select>
+                </div>
+                <div class="row form-group">
+                <div class="col-md-12 mb-3 mb-md-0">
+                  <label class="font-weight-bold" form="iduser">Id User</label>
+                  <input name="iduser" type="text" id="iduser" class="form-control">
+                </div>
+              </div>
                 <div class="col-md-12">
                   <center><input type="submit" value="Kirim Ide" class="btn btn-primary  py-2 px-5"></center>
                 </div>
               </div>
-            </form>
           </div>
         </div>
       </div>
     </div>
+    </form>
