@@ -6,36 +6,54 @@
         <div class="sidebar-brand-icon">
           <img src="<?= base_url()?>/assets/admin/img/logo/logo2.png">
         </div>
-        <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+        <div class="sidebar-brand-text mx-3">Admin Lembaga Pelatihan</div>
       </a>
       <hr class="sidebar-divider my-0">
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item active">
+        <a class="nav-link" href="<?=base_url();?>/admin_lembaga/index">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
-        Lembaga Pelatihan
+        Admin Lembaga Pelatihan
       </div>
-        <li class="nav-item active">
-        <a class="nav-link" href="ui-colors.html">
+        <li class="nav-item">
+        <a class="nav-link" href="<?=base_url();?>/admin_lembaga/data_lembaga">
           <i class="fas fa-fw fa-palette"></i>
           <span>Data Lembaga</span>
+        </a>
+        <a class="nav-link" href="<?=base_url();?>/admin_lembaga/lembaga_favorite">
+          <i class="fas fa-fw fa-palette"></i>
+          <span>Lembaga Pelatihan Favorite</span>
+        </a>
+        <a class="nav-link" href="<?=base_url();?>/admin_lembaga/grafik_lembaga">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Garfik Lembaga Pelatihan</span>
+        </a>
+      </li>
+
+      <!-- <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Kategori
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=base_url();?>/lembaga/kategori_pelatihan">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Kategori Pelatihan</span>
         </a>
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
-        User
+        Materi Pelatihan
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?=base_url();?>/lembaga/materi_pelatihan">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Data User</span>
+          <span>Materi Pelatihan</span>
         </a>
       </li>
-      <hr class="sidebar-divider">
-      
+      <hr class="sidebar-divider"> -->
     </ul>
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -201,7 +219,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="<?= base_url()?>/assets/admin/img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">IdBiSid</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -226,11 +244,19 @@
           </ul>
         </nav>
         <!-- Topbar -->
+
+        <!-- Container Fluid-->
+        <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- Topbar -->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Lembaga Pelatihann</h1>
+            <h1 class="h3 mb-0 text-gray-800">Admin Lembaga Pelatihan</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item active" aria-current="page">Data Lembaga</li>
+              <li class="breadcrumb-item active" aria-current="page">Admin Lembaga Pelatihan</li>
             </ol>
           </div>
+          
+
+          
