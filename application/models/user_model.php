@@ -3,20 +3,51 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class user_model extends CI_Model {
-    // public function cariIdeBisnis()
-    // {
-    //     # code...
-    //     $kategori = $this->input->post('kategori');
-    //     $oleh = $this->input->post('oleh');
-    //     $judul = $this->input->post('judul');
-    //     $this->db->select('judul, ide_bisnis.foto, deskripsi, kategori_ide, user.username as oleh');
-    //     $this->db->from('ide_bisnis');
-    //     $this->db->join('user', 'ide_bisnis.id_user = user.id_user');
-    //     $this->db->like('kategori_ide', $kategori);
-    //     $this->db->or_like('judul', $judul);
-    //     $this->db->or_like('user.id_user', $oleh);
-    //     return $this->db->get()->result_array();
-    // }
+
+    public function cariIdeBisnis()
+    {
+        # code...
+        $judul=$this->input->post('judul');
+        $kategori=$this->input->post('kategori');
+        $oleh=$this->input->post('oleh');
+        // echo "'<script>console.log(\"$oleh\")</script>'";
+        $this->db->select('judul, ide_bisnis.foto, deskripsi, user.username as oleh, suka');
+        $this->db->from('ide_bisnis');
+        $this->db->join('user', 'ide_bisnis.id_user = user.id_user');
+        if ($judul != '') {
+            # code...
+            $this->db->or_like('judul', $judul);
+        }
+        if ($kategori != '') {
+            # code...
+            $this->db->or_like('kategori_ide', $kategori);
+        }
+        if ($oleh != '') {
+            # code...
+            $this->db->or_like('user.username', $oleh);
+        }
+        return $this->db->get()->result_array();
+    }
+
+    public function cariPelatihan()
+    {
+        # code...
+        $nama_pelatihan=$this->input->post('nama_pelatihan');
+        $nama_lembaga=$this->input->post('nama_lembaga');
+        // echo "'<script>console.log(\"$nama_pelatihan\")</script>'";
+        $this->db->select('nama_pelatihan, pelatihan.deskripsi as desc, lembaga_pelatihan.logo_lembaga as logo');
+        $this->db->from('pelatihan');
+        $this->db->join('lembaga_pelatihan', 'pelatihan.id_lembaga = lembaga_pelatihan.id_lembaga');
+        if ($nama_pelatihan != '') {
+            # code...
+            $this->db->or_like('nama_pelatihan', $nama_pelatihan);
+        }
+        if ($nama_lembaga != '') {
+            # code...
+            $this->db->or_like('lembaga_pelatihan.nama_lembaga', $nama_lembaga);
+        }
+        return $this->db->get()->result_array();
+    }
 
     public function tampilTopIdeBisnis()
     {
@@ -67,6 +98,14 @@ class user_model extends CI_Model {
         $this->db->select('nama_pelatihan, pelatihan.deskripsi as desc, lembaga_pelatihan.logo_lembaga as logo');
         $this->db->from('pelatihan');
         $this->db->join('lembaga_pelatihan', 'pelatihan.id_lembaga = lembaga_pelatihan.id_lembaga');
+        return $this->db->get()->result_array();
+    }
+
+    public function tampilLembagaPelatihan()
+    {
+        # code...
+        $this->db->select('nama_lembaga, alamat');
+        $this->db->from('lembaga_pelatihan');
         return $this->db->get()->result_array();
     }
 

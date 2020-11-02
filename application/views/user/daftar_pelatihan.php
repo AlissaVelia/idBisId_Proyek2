@@ -45,6 +45,36 @@
       </div>
     </div>
 
+    <!-- PENCARIAN -->
+    <div class="job-search">
+              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Cari Pelatihan</a>
+                </li>
+              </ul>
+
+              <!-- PENCARIAN IDE -->
+              <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
+                  <form action="" method="post">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input name="nama_pelatihan" id="nama_pelatihan" type="text" class="form-control" placeholder="Contoh : Desain Grafis">
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input type="text" class="form-control" name="nama_lembaga" id="nama_lembaga" placeholder="Contoh : KOMINFO">
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input type="submit" class="btn btn-primary btn-block" value="Cari">
+                      </div>
+                      
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div> 
+
+
     <!-- KONTEN DAFTAR PELATIHAN -->
     <div class="site-section border-top">
       <div class="container">

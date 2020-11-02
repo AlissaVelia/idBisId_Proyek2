@@ -19,10 +19,6 @@ class user extends CI_Controller {
 
         $data['ide_bisnis']=$this->user_model->tampilTopIdeBisnis();
         $data['pelatihan']=$this->user_model->tampilTopPelatihan();
-        
-        if ($this->input->post('kategori, oleh, judul')){
-            $data['ide_bisnis']=$this->user_model->cariIdeBisnis();
-        }
 
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/index',$data);
@@ -58,6 +54,11 @@ class user extends CI_Controller {
     public function ide_bisnis() {
         $data['title'] = 'Ide Bisnis - idBisid';
         $data['ide_bisnis']=$this->user_model->tampilSemuaIdeBisnis();
+
+        if ($this->input->post('judul') or $this->input->post('kategori') or $this->input->post('oleh')){
+            $data['ide_bisnis']=$this->user_model->cariIdeBisnis();
+        }
+
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/ide_bisnis',$data);
         $this->load->view('template/user/footer_user');
@@ -92,6 +93,11 @@ class user extends CI_Controller {
     public function daftar_pelatihan() {
         $data['title'] = 'Daftar Pelatihan - idBisid';
         $data['pelatihan']=$this->user_model->tampilSemuaPelatihan();
+
+        if ($this->input->post('nama_pelatihan') or $this->input->post('nama_lembaga')){
+            $data['pelatihan']=$this->user_model->cariPelatihan();
+        }
+
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/daftar_pelatihan',$data);
         $this->load->view('template/user/footer_user');
@@ -127,6 +133,7 @@ class user extends CI_Controller {
 
     public function daftar_lembaga() {
         $data['title'] = 'Daftar Lembaga - idBisid';
+        $data['lembaga']=$this->user_model->tampilLembagaPelatihan();
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/daftar_lembaga',$data);
         $this->load->view('template/user/footer_user');

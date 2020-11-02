@@ -46,6 +46,57 @@
       </div>
     </div>
 
+    <div class="site-blocks-cover" style="background-image: url(<?php echo base_url('assets/user2/images/hero_bg_1.jpg')?>);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row row-custom align-items-center">
+          <div class="col-md-10">
+            <h1 class="mb-2 text-black w-75"><span class="font-weight-bold">Find Your</span> Dream Job Here</h1>
+
+            <!-- PENCARIAN -->
+            <div class="job-search">
+              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active py-3" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="true">Cari Ide</a>
+                </li>
+              </ul>
+
+              <!-- PENCARIAN IDE -->
+              <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
+                  <form action="" method="post">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input name="judul" id="judul" type="text" class="form-control" placeholder="Contoh : Ternak Lele">
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <div class="select-wrap">
+                          <span class="icon-keyboard_arrow_down arrow-down"></span>
+                          <select name="kategori" id="kategori" class="form-control">
+                            <option value="">Kategori</option>
+                            <option value="Kuliner">Kuliner</option>
+                            <option value="Travelling">Travelling</option>
+                            <option value="Penjualan">Penjualan</option>
+                            <option value="Peternakan">Peternakan</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input type="text" class="form-control" name="oleh" id="oleh" placeholder="Siapa Pemilik Ide?">
+                      </div>
+                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                        <input type="submit" class="btn btn-primary btn-block" value="Cari">
+                      </div>
+                      
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+
     <!-- KONTEN IDE -->
     <div class="site-section bg-light">
       <div class="container">
