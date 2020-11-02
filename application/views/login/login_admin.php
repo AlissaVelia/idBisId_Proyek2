@@ -1,3 +1,4 @@
+<?= form_open('login/proses_login_admin')?>
 <body class="bg-gradient-login">
   <!-- Login Content -->
   <div class="container-login">
@@ -9,15 +10,14 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <b><h1 class="h4 text-gray-900 mb-4">Login - idBisid</h1></b>
+                    <b><h1 class="h4 text-gray-900 mb-4">Login Admin - idBisid</h1></b>
                   </div>
                   <form class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
-                        placeholder="Username" required>
+                      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Username" name="unameadmin">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" required>
+                      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="pwdadmin">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
@@ -27,14 +27,20 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <a href="index.html" class="btn btn-primary btn-block">Login</a>
+                      <button class="btn btn-primary btn-block">Login</button>
                     </div>
                   </form>
                   <hr>
-                  <div class="text-center">
-                    <a class="font-weight-bold small" href="<?= base_url();?>login/register">Create an Account!</a>
-                  </div>
-                  <div class="text-center">
+                  <center><div class="alert alert-info" role="alert">
+                    <?php
+                        if(isset($pesan)) {
+                            echo $pesan;
+                        }
+                        else {
+                            echo "Masukkan Username Dan Password Anda";
+                        }
+                    ?>
+                </div></center>
                   </div>
                 </div>
               </div>
@@ -44,3 +50,4 @@
       </div>
     </div>
   </div>
+<?= form_close();?>

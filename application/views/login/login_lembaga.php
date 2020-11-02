@@ -1,4 +1,4 @@
-<?= form_open('login/proses_login_user')?>
+<?= form_open('login/proses_login_lembaga')?>
 <body class="bg-gradient-login">
   <!-- Login Content -->
   <div class="container-login">
@@ -10,14 +10,14 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <b><h1 class="h4 text-gray-900 mb-4">Login User - idBisid</h1></b>
+                    <b><h1 class="h4 text-gray-900 mb-4">Login Lembaga Pelatihan - idBisid</h1></b>
                   </div>
                   <form class="user">
                     <div class="form-group">
-                      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Username" name="unameuser">
+                      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Username" name="unamelembaga">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="pwduser">
+                      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="pwdlembaga">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
@@ -30,6 +30,7 @@
                       <button class="btn btn-primary btn-block">Login</button>
                     </div>
                   </form>
+                  
                   <center><div class="alert alert-info" role="alert">
                     <?php
                         if(isset($pesan)) {
@@ -42,11 +43,9 @@
                 </div></center>
                 <hr>
                 <div class="text-center">
-                    <a class="font-weight-bold small" href="<?= base_url();?>login/register_user">Create an Account!</a>
+                    <a class="font-weight-bold small" href="<?= base_url();?>login/register_lembaga">Create an Account!</a>
                   </div>
                   <div class="text-center">
-                  </div>
-                </div>
                   </div>
                 </div>
               </div>
