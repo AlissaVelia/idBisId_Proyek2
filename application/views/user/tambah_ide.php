@@ -1,3 +1,23 @@
+<?php 
+  if ('is_login'==TRUE) {
+    # code...
+    $menu = "Hai, ";
+    $menu .= $this->session->userdata('user');
+    $link = "user/profil_user";
+    $id = $this->session->userdata('id_user');
+  } else if ('is_login'!=TRUE) {
+    # code...
+    redirect('login','refresh');
+  ?>
+    
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Harap Login</strong> <?= $this->session->flashdata('flash-data');?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+<?php }?>
+
 <body>
   <div class="site-wrap">
     <div class="site-mobile-menu">
@@ -26,8 +46,8 @@
                 <li><a href="<?=base_url()?>/user/daftar_pelatihan">Pelatihan</a></li>
                 <li><a href="<?=base_url()?>/user/tentang">Tentang</a></li>
                 <li><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
-                <li><a href="<?=base_url()?>/user/profil_user">Hi, (Nama Kamu)</a></li>
-              </ul>
+                <li><a href="<?=base_url()?><?=$link?>"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span><?php echo $menu ?></span></a></li>
+                </ul>
             </nav>
           </div>
           <div class="col-6 col-xl-2 text-right d-block">
@@ -90,8 +110,7 @@
                 </div>
                 <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" form="iduser">Id User</label>
-                  <input name="iduser" type="text" id="iduser" class="form-control">
+                  <input name="iduser" type="hidden" id="iduser" class="form-control" value="<?=$id?>">
                 </div>
               </div>
                 <div class="col-md-12">

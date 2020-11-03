@@ -30,6 +30,7 @@
                 // untuk menampilkan username user yang sedang login
                 $this->session->set_userdata('user', $row->username);
                 $this->session->set_userdata('id_user', $row->id_user);
+                $this->session->set_userdata('is_login',TRUE);
                 redirect('user');
             }
             else {

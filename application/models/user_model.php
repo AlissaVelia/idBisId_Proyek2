@@ -11,7 +11,7 @@ class user_model extends CI_Model {
         $kategori=$this->input->post('kategori');
         $oleh=$this->input->post('oleh');
         // echo "'<script>console.log(\"$oleh\")</script>'";
-        $this->db->select('judul, ide_bisnis.foto, deskripsi, user.username as oleh, suka');
+        $this->db->select('id_idebisnis, judul, ide_bisnis.foto, deskripsi, user.username as oleh, suka');
         $this->db->from('ide_bisnis');
         $this->db->join('user', 'ide_bisnis.id_user = user.id_user');
         if ($judul != '') {
@@ -52,7 +52,7 @@ class user_model extends CI_Model {
     public function tampilTopIdeBisnis()
     {
         # code...
-        $this->db->select('judul, ide_bisnis.foto, deskripsi, user.username as oleh, suka');
+        $this->db->select('id_idebisnis, judul, ide_bisnis.foto, deskripsi, user.username as oleh, suka');
         $this->db->from('ide_bisnis');
         $this->db->join('user', 'ide_bisnis.id_user = user.id_user');
         $this->db->order_by('suka', 'DESC');
@@ -86,7 +86,7 @@ class user_model extends CI_Model {
     public function tampilSemuaIdeBisnis()
     {
         # code...
-        $this->db->select('judul, ide_bisnis.foto as foto, deskripsi, user.username as oleh, suka');
+        $this->db->select('id_idebisnis, judul, ide_bisnis.foto as foto, deskripsi, user.username as oleh, suka');
         $this->db->from('ide_bisnis');
         $this->db->join('user', 'ide_bisnis.id_user = user.id_user');
         return $this->db->get()->result_array();
@@ -107,6 +107,12 @@ class user_model extends CI_Model {
         $this->db->select('nama_lembaga, alamat');
         $this->db->from('lembaga_pelatihan');
         return $this->db->get()->result_array();
+    }
+
+    public function tampilDetailIdeBisnis($id_idebisnis)
+    {
+        # code...
+        return $this->db->get_where('ide_bisnis', ['id_idebisnis'=>$id_idebisnis])->row_array();
     }
 
     public function tampilDetailPelatihan($id_pelatihan)

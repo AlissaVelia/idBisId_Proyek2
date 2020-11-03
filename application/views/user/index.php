@@ -1,3 +1,16 @@
+<?php 
+  if ('is_login' == TRUE) {
+    # code...
+    $menu = "Hai, ";
+    $menu .= $this->session->userdata('user');
+    $link = "user/profil_user";
+  } else {
+    $menu = 'Login';
+    $link = "login/index";
+  }
+  
+?>
+
 <body>
   <div class="site-wrap">
     <div class="site-mobile-menu">
@@ -26,8 +39,8 @@
                 <li><a href="<?=base_url()?>user/daftar_pelatihan">Pelatihan</a></li>
                 <li><a href="<?=base_url()?>user/tentang">Tentang</a></li>
                 <li><a href="<?=base_url()?>user/kontak">Kontak</a></li>
-                <li><a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a></li>
-              </ul>
+                <li><a href="<?=base_url()?><?=$link?>"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span><?php echo $menu ?></span></a></li>
+                </ul>
             </nav>
           </div>
           <div class="col-6 col-xl-2 text-right d-block">
@@ -53,9 +66,9 @@
         <?php foreach ($ide_bisnis as $ide) :?>
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
             <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded"></a>
+            <a href="<?=base_url()?>/user/detail_ide/<?= $ide['id_idebisnis'];?>" class="mb-3 d-block img-a"><img src="<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded"></a>
             <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user"><?= $ide['oleh'];?></a><span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;<?= $ide['suka'];?></span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black"><?= $ide['judul'];?></a></h2>
+            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide/<?= $ide['id_idebisnis'];?>" class="text-black"><?= $ide['judul'];?></a></h2>
             <p><?= $ide['deskripsi'];?></p>
             </div>
           </div>

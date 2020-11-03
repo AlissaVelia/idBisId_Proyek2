@@ -83,8 +83,9 @@ class user extends CI_Controller {
         }
     }
 
-    public function detail_ide() {
+    public function detail_ide($id_idebisnis) {
         $data['title'] = 'Detail Ide - idBisid';
+        $data['ide_bisnis']=$this->user_model->tampilDetailIdeBisnis($id_idebisnis);
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/detail_ide',$data);
         $this->load->view('template/user/footer_user');
