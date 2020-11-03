@@ -35,7 +35,7 @@ class user_model extends CI_Model {
         $nama_pelatihan=$this->input->post('nama_pelatihan');
         $nama_lembaga=$this->input->post('nama_lembaga');
         // echo "'<script>console.log(\"$nama_pelatihan\")</script>'";
-        $this->db->select('nama_pelatihan, pelatihan.deskripsi as desc, lembaga_pelatihan.logo_lembaga as logo');
+        $this->db->select('id_pelatihan, nama_pelatihan, pelatihan.deskripsi as desc, lembaga_pelatihan.logo_lembaga as logo');
         $this->db->from('pelatihan');
         $this->db->join('lembaga_pelatihan', 'pelatihan.id_lembaga = lembaga_pelatihan.id_lembaga');
         if ($nama_pelatihan != '') {
@@ -63,7 +63,7 @@ class user_model extends CI_Model {
     public function tampilTopPelatihan()
     {
         # code...
-        $this->db->select('nama_pelatihan, pelatihan.deskripsi as desc, lembaga_pelatihan.logo_lembaga as logo');
+        $this->db->select('id_pelatihan, nama_pelatihan, pelatihan.deskripsi as desc, lembaga_pelatihan.logo_lembaga as logo');
         $this->db->from('pelatihan');
         $this->db->join('lembaga_pelatihan', 'pelatihan.id_lembaga = lembaga_pelatihan.id_lembaga');
         $this->db->limit(12);
@@ -95,7 +95,7 @@ class user_model extends CI_Model {
     public function tampilSemuaPelatihan()
     {
         # code...
-        $this->db->select('nama_pelatihan, pelatihan.deskripsi as desc, lembaga_pelatihan.logo_lembaga as logo');
+        $this->db->select('id_pelatihan, nama_pelatihan, pelatihan.deskripsi as desc, lembaga_pelatihan.logo_lembaga as logo');
         $this->db->from('pelatihan');
         $this->db->join('lembaga_pelatihan', 'pelatihan.id_lembaga = lembaga_pelatihan.id_lembaga');
         return $this->db->get()->result_array();
@@ -107,6 +107,12 @@ class user_model extends CI_Model {
         $this->db->select('nama_lembaga, alamat');
         $this->db->from('lembaga_pelatihan');
         return $this->db->get()->result_array();
+    }
+
+    public function tampilDetailPelatihan($id_pelatihan)
+    {
+        # code...
+        return $this->db->get_where('pelatihan', ['id_pelatihan'=>$id_pelatihan])->row_array();
     }
 
 }

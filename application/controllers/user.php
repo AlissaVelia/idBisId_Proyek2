@@ -103,8 +103,9 @@ class user extends CI_Controller {
         $this->load->view('template/user/footer_user');
     }
 
-    public function detail_pelatihan() {
+    public function detail_pelatihan($id_pelatihan) {
         $data['title'] = 'Daftar Pelatihan - idBisid';
+        $data['pelatihan']=$this->user_model->tampilDetailPelatihan($id_pelatihan);
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/detail_pelatihan',$data);
         $this->load->view('template/user/footer_user');

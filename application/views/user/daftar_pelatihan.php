@@ -97,10 +97,11 @@
                     <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
                   </svg><span><img src="<?= $pl['logo'];?>"></span>
                   </div>
-                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan" style="color:black;"><?= $pl['nama_pelatihan'];?></a></h2>
+                  <h2><?= $pl['id_pelatihan'];?></h2>
+                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan/<?= $pl['id_pelatihan'];?>" style="color:black;"><?= $pl['nama_pelatihan'];?></a></h2>
               </div>
               <div class="unit-3-body">
-                <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;"><?= $pl['desc'];?></a></p>
+                <p><a href="<?=base_url()?>/user/detail_pelatihan/<?= $pl['id_pelatihan'];?>" style="color:#b3b3b3;"><?= $pl['desc'];?></a></p>
               </div>
             </div>
           </div>
