@@ -55,7 +55,7 @@
                     </div>
                     <div class="row form-group mb-5">
                       <div class="col-md-12 mb-3 mb-md-0">
-                        <label class="font-weight-bold" for="fullname">Unggah Foto Profil</label>
+                        <label class="font-weight-bold" for="fullname">Unggah Logo Lembaga</label>
                         <input type="file" id="fullname" class="form-control" name="surat_lembaga">
                         <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                       </div>
