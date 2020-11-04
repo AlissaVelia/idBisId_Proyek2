@@ -26,7 +26,14 @@
                 <li><a href="<?=base_url()?>/user/daftar_pelatihan">Pelatihan</a></li>
                 <li><a href="<?=base_url()?>/user/tentang">Tentang</a></li>
                 <li><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
-                <li><a href="<?=base_url()?>/login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a></li>
+                <li>
+                  <?php if ($this->session->userdata('status')=="login") {;?>
+                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                  <?php }?>
+                  <?php if ($this->session->userdata('status')!="login"){?>
+                      <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
+                  <?php }?>
+                </li>
               </ul>
             </nav>
           </div>

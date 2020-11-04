@@ -92,7 +92,7 @@
                 "username" => $this->input->post('username', true),
                 "password" => $this->input->post('password', true),
                 "surat_lembaga" => $this->uploadSuratLembaga(),
-                "foto_lembaga" => $this->uploadFotoLembaga()
+                "logo_lembaga" => $this->uploadFotoLembaga()
             ];
             $this->db->insert('lembaga_pelatihan', $data);
         }

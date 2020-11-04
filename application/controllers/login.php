@@ -30,7 +30,7 @@
                 // untuk menampilkan username user yang sedang login
                 $this->session->set_userdata('user', $row->username);
                 $this->session->set_userdata('id_user', $row->id_user);
-                $this->session->set_userdata('is_login',TRUE);
+                $this->session->set_userdata('status',"login");
                 redirect('user');
             }
             else {
@@ -40,6 +40,13 @@
                 $this->load->view('login/index',$data);
                 $this->load->view('template/login/footer_login');
             }
+        }
+
+        public function logout()
+        {
+            // hancurkan semua sesi
+            $this->session->sess_destroy();
+            redirect('user');
         }
 
         public function login_admin() {

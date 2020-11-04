@@ -26,7 +26,14 @@
                 <li><a href="<?=base_url()?>/user/daftar_pelatihan">Pelatihan</a></li>
                 <li><a href="<?=base_url()?>/user/tentang">Tentang</a></li>
                 <li><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
-                <li class="active"><a href="<?=base_url()?>/login/profil">Hi, (Nama Kamu)</a></li>
+                <li class="active">
+                  <?php if ($this->session->userdata('status')=="login") {;?>
+                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                  <?php }?>
+                  <?php if ($this->session->userdata('status')!="login"){?>
+                      <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
+                  <?php }?>
+                </li>
               </ul>
             </nav>
           </div>
@@ -40,7 +47,7 @@
     <!-- GAMBAR ATAS -->
     <div class="unit-5 overlay" style="background-image: url(<?php echo base_url('assets/user2/images/hero_bg_2.jpg')?>);">
       <div class="container text-center">
-        <h2 class="mb-0">- Profil Kamu -</h2>
+        <h2 class="mb-0">- Profil -</h2>
         <p class="mb-0 unit-6"><a href="<?=base_url()?>/user/index">Beranda</a> <span class="sep">></span> <span>Profil</span></p>
       </div>
     </div>
@@ -55,11 +62,12 @@
           <h4 class="profile-user-name">shevaputriw</h4>
           <a href="<?=base_url()?>/user/ubah_profil_user"><button class="btn profile-edit-btn">Ubah Profil</button></a>
           <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+          <a href="<?=base_url()?><?= 'login/logout' ?>"><button class="btn profile-edit-btn">Logout</button></a>
+          <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
         </div>
         <div class="profile-stats">
           <ul>
             <li><span class="profile-stat-count">4</span> Ide Bisnis</li>
-            <li><span class="profile-stat-count">7</span> menyukai</li>
           </ul>
         </div>
         <div class="profile-bio">
@@ -70,7 +78,7 @@
 
     <div class="site-section bg-light">
       <div class="container">
-        <center><h2 class="text-black">- Ide Bisnis <strong>Kamu -</strong></h2></center><br>
+          <center><h2 class="text-black">- Ide Bisnis -</h2></center><br>
         <div class="row">
           <!-- 1 -->
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
@@ -79,33 +87,6 @@
               <span class="d-block text-gray-500 text-normal small mb-3">Jan 20th, 2019 <span class="mx-2">&bullet;</span>&nbsp;<span class="icon-heart"></span> &nbsp;3</span>
               <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide_user" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
-          </div>
-            <!-- 2 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-              <a href="<?=base_url()?>/user/detail_ide_user" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-              <span class="d-block text-gray-500 text-normal small mb-3">Jan 20th, 2019 <span class="mx-2">&bullet;</span>&nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-              <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide_user" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
-          </div>
-            <!-- 3 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-              <a href="<?=base_url()?>/user/detail_ide_user" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_3.jpg" alt="Image" class="img-fluid rounded"></a>
-              <span class="d-block text-gray-500 text-normal small mb-3">Jan 20th, 2019 <span class="mx-2">&bullet;</span>&nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-              <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide_user" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
-          </div>
-            <!-- 4 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-              <a href="<?=base_url()?>/user/detail_ide_user" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_4.jpg" alt="Image" class="img-fluid rounded"></a>
-              <span class="d-block text-gray-500 text-normal small mb-3">Jan 20th, 2019 <span class="mx-2">&bullet;</span>&nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-              <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide_user" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.szxsxsx</p>
             </div>
           </div>
         </div>
@@ -135,7 +116,7 @@
       <div class="container">
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-6" data-aos="fade" >
-            <h2 class="text-black">- Pelatihan <strong>yang Kamu Ikuti -</strong> </h2>
+            <h2 class="text-black">- Pelatihan <strong>yang Diikuti -</strong> </h2>
           </div>
         </div>
         <div class="row hosting">
@@ -152,40 +133,6 @@
               </div>
               <div class="unit-3-body">
                 <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;">Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.csdacsacs</a></p>
-                <p style="margin-left: 160px;"><a href="<?=base_url()?>/user/penilaian" style="color:#4d90fe;"><b>Beri Penilaian -></b></a></p>
-              </div>
-            </div>
-          </div>
-          <!-- 2 -->
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="500">
-            <div class="unit-3 h-100 bg-white">
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="<?=base_url()?>/http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-clipboard68"></span>
-                </div>
-                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan" style="color:black;">Easy To Manage Jobs</a></h2>
-              </div>
-              <div class="unit-3-body">
-                <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;">Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.</a></p>
-                <p style="margin-left: 160px;"><a href="<?=base_url()?>/user/penilaian" style="color:#4d90fe;"><b>Beri Penilaian -></b></a></p>
-              </div>
-            </div>
-          </div>
-          <!-- 3 -->
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="600">
-            <div class="unit-3 h-100 bg-white">
-              <div class="d-flex align-items-center mb-3 unit-3-heading">
-                <div class="unit-3-icon-wrap mr-4">
-                  <svg class="unit-3-svg" xmlns="<?=base_url()?>/http://www.w3.org/2000/svg" width="59px" height="68px">
-                    <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-user143"></span>
-                </div>
-                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan" style="color:black;">Online Reviews</a></h2>
-              </div>
-              <div class="unit-3-body">
-                <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;">Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.dxcs</a></p>
                 <p style="margin-left: 160px;"><a href="<?=base_url()?>/user/penilaian" style="color:#4d90fe;"><b>Beri Penilaian -></b></a></p>
               </div>
             </div>
@@ -214,39 +161,12 @@
 
   <div class="site-section bg-light">
       <div class="container">
-        <center><h2 class="text-black">- Ide Bisnis <strong>yang Kamu Sukai -</strong></h2></center><br>
+        <center><h2 class="text-black">- Ide Bisnis <strong>Favorit -</strong></h2></center><br>
         <div class="row">
         <!-- 1 -->
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
             <div class="position-relative unit-8">
             <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
-          </div>
-          <!-- 2 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
-          </div>
-          <!-- 3 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_3.jpg" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
-            </div>
-          </div>
-          <!-- 4 -->
-          <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
-            <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_4.jpg" alt="Image" class="img-fluid rounded"></a>
             <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
             <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>

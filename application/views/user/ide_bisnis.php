@@ -39,8 +39,15 @@
                 <li><a href="<?=base_url()?>user/daftar_pelatihan">Pelatihan</a></li>
                 <li><a href="<?=base_url()?>user/tentang">Tentang</a></li>
                 <li><a href="<?=base_url()?>user/kontak">Kontak</a></li>
-                <li><a href="<?=base_url()?><?=$link?>"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span><?php echo $menu ?></span></a></li>
-                </ul>
+                <li>
+                  <?php if ($this->session->userdata('status')=="login") {;?>
+                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                  <?php }?>
+                  <?php if ($this->session->userdata('status')!="login"){?>
+                      <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
+                  <?php }?>
+                </li>
+              </ul>
             </nav>
           </div>
           <div class="col-6 col-xl-2 text-right d-block">
@@ -85,10 +92,9 @@
                           <span class="icon-keyboard_arrow_down arrow-down"></span>
                           <select name="kategori" id="kategori" class="form-control">
                             <option value="">Kategori</option>
-                            <option value="Kuliner">Kuliner</option>
-                            <option value="Travelling">Travelling</option>
-                            <option value="Penjualan">Penjualan</option>
-                            <option value="Peternakan">Peternakan</option>
+                            <?php foreach ($kategori_ide as $ki) :?>
+                              <option value="<?= $ki['nama_kategori'];?>"><?= $ki['nama_kategori'];?></option>
+                            <?php endforeach; ?>
                           </select>
                         </div>
                       </div>

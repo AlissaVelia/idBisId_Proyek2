@@ -54,6 +54,7 @@ class user extends CI_Controller {
     public function ide_bisnis() {
         $data['title'] = 'Ide Bisnis - idBisid';
         $data['ide_bisnis']=$this->user_model->tampilSemuaIdeBisnis();
+        $data['kategori_ide']=$this->user_model->tampilKategoriIde();
 
         if ($this->input->post('judul') or $this->input->post('kategori') or $this->input->post('oleh')){
             $data['ide_bisnis']=$this->user_model->cariIdeBisnis();
@@ -147,6 +148,13 @@ class user extends CI_Controller {
         $this->load->view('user/profil_lembaga',$data);
         $this->load->view('template/user/footer_user');
     }
+
+    // public function look_profil_user() {
+    //     $data['title'] = 'Profil Kamu - idBisid';
+    //     $this->load->view('template/user/header_profil_user',$data);
+    //     $this->load->view('user/look_profil_user',$data);
+    //     $this->load->view('template/user/footer_user');
+    // }
 
     public function profil_user() {
         $data['title'] = 'Profil Kamu - idBisid';

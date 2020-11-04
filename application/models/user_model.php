@@ -14,13 +14,14 @@ class user_model extends CI_Model {
         $this->db->select('id_idebisnis, judul, ide_bisnis.foto, deskripsi, user.username as oleh, suka');
         $this->db->from('ide_bisnis');
         $this->db->join('user', 'ide_bisnis.id_user = user.id_user');
+        $this->db->join('kategori_ide', 'ide_bisnis.id_kategoriide  = kategori_ide.id_kategoriide');
         if ($judul != '') {
             # code...
             $this->db->or_like('judul', $judul);
         }
         if ($kategori != '') {
             # code...
-            $this->db->or_like('kategori_ide', $kategori);
+            $this->db->or_like('kategori_ide.nama_kategori', $kategori);
         }
         if ($oleh != '') {
             # code...
@@ -46,6 +47,14 @@ class user_model extends CI_Model {
             # code...
             $this->db->or_like('lembaga_pelatihan.nama_lembaga', $nama_lembaga);
         }
+        return $this->db->get()->result_array();
+    }
+
+    public function tampilKategoriIde()
+    {
+        # code...
+        $this->db->select('id_kategoriide, nama_kategori');
+        $this->db->from('kategori_ide');
         return $this->db->get()->result_array();
     }
 
@@ -112,7 +121,11 @@ class user_model extends CI_Model {
     public function tampilDetailIdeBisnis($id_idebisnis)
     {
         # code...
-        return $this->db->get_where('ide_bisnis', ['id_idebisnis'=>$id_idebisnis])->row_array();
+        $this->db->select('id_idebisnis, judul, ide_bisnis.foto, deskripsi, suka, nama_kategori');
+        $this->db->from('ide_bisnis');
+        $this->db->join('kategori_ide', 'ide_bisnis.id_kategoriide  = kategori_ide.id_kategoriide');
+        $this->db->where('id_idebisnis', $id_idebisnis);
+        return $this->db->get()->row_array();
     }
 
     public function tampilDetailPelatihan($id_pelatihan)
