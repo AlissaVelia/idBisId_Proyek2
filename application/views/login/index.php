@@ -29,8 +29,12 @@
                     <div class="form-group">
                       <button class="btn btn-primary btn-block">Login</button>
                     </div>
+                    <div class="form-group">
+                   
                   </form>
-                  <center><div class="alert alert-info" role="alert">
+                  <a class="btn btn-warning btn-block" href="<?= base_url();?>login/register_lembaga">Daftar Pelatihan</a>
+                    </div>
+                  <!-- <center><div class="alert alert-info" role="alert">
                     <?php
                         if(isset($pesan)) {
                             echo $pesan;
@@ -39,7 +43,7 @@
                             echo "Masukkan Username Dan Password Anda";
                         }
                     ?>
-                </div></center>
+                </div></center> -->
                 <hr>
                 <div class="text-center">
                     <a class="font-weight-bold small" href="<?= base_url();?>login/register_user">Create an Account!</a>

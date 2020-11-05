@@ -75,7 +75,7 @@
         <?= validation_errors() ?>
       </div>
     <?php } ?>
-    <form action="" class="p-5 bg-white" method="post" enctype="multipart/form-data">
+    <form action="<?php echo base_url('index.php/user/tambah_ide'); ?>" method="post" enctype="multipart/form-data">
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
@@ -90,7 +90,7 @@
               <div class="row form-group mb-5">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" form="foto">Gambar : </label>
-                  <input type="text" name="foto" id="foto" class="form-control">
+                  <input type="file" name="foto" class="form-control">
                   <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                 </div>
               </div>
@@ -104,12 +104,13 @@
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" form="kategori">Kategori Ide Bisnis</label>
                           <span class="icon-keyboard_arrow_down arrow-down"></span>
-                          <select name="kategori" id="kategori" class="form-control">
-                            <option value="All Kategori">Kategori</option>
-                            <option value="Kuliner">Kuliner</option>
-                            <option value="Travelling">Travelling</option>
-                            <option value="Penjualan">Penjualan</option>
-                            <option value="Peternakan">Peternakan</option>
+                            <select name="kategori" id="kategori" class="form-control"> PILIH KATEGORI
+                            <option value="1" >Penjualan</option>
+                            <option value="2">Pertanian</option>
+                            <option value="3">Peternakan</option>
+                            <option value="4">Travelling</option>
+                            <option value="5">Kuliner</option>
+                            <option value="6">Lain</option>
                           </select>
                 </div>
                 <div class="row form-group">

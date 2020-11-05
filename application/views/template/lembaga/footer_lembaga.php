@@ -22,6 +22,7 @@
   <script src="<?= base_url()?>/assets/admin/js/ruang-admin.min.js"></script>
   <script src="<?= base_url()?>/assets/admin/vendor/chart.js/Chart.min.js"></script>
   <script src="<?= base_url()?>/assets/admin/js/demo/chart-area-demo.js"></script>  
+  
 </body>
 
 </html>

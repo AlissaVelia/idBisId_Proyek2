@@ -79,17 +79,23 @@ class user_model extends CI_Model {
         return $this->db->get()->result_array();
     }
 
-    public function tambahIde()
+    public function tambahIde($foto)
     {
         # code...
-        $data = [
-            'judul'=>$this->input->post('judul', true),
-            'foto'=>$this->input->post('foto', true),
-            'deskripsi'=>$this->input->post('deskripsi', true),
-            'kategori_ide'=>$this->input->post('kategori', true),
-            'id_user'=>$this->input->post('iduser', true)
-        ];
+        $data = array(
+            'judul'=>$this->input->post('judul'),
+            // 'foto'=>$this->input->post('foto', true),
+            'deskripsi'=>$this->input->post('deskripsi'),
+            'id_kategoriide'=>$this->input->post('kategori'),
+            'id_user'=>$this->input->post('iduser', true),
+            'foto' => $foto['file_name']
+        );
         $this->db->insert('ide_bisnis', $data);
+        if ($this->db->affected_rows() > 0) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
     }
 
     public function tampilSemuaIdeBisnis()

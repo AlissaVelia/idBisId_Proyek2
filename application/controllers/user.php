@@ -65,23 +65,66 @@ class user extends CI_Controller {
         $this->load->view('template/user/footer_user');
     }
 
+    public function halaman_tambah_ide() {
+            $this->load->view('template/user/header_user');
+            $this->load->view('user/tambah_ide');
+            $this->load->view('template/user/footer_user');
+    }
     public function tambah_ide() {
-        $this->load->library('form_validation');
-        $data['title'] = 'Tambahkan Ide - idBisid';
+        if ($this->session->userdata('logged_in') == TRUE) {
+        // $this->load->library('form_validation');
+        // $data['title'] = 'Tambahkan Ide - idBisid';
         $this->form_validation->set_rules('judul', 'judul', 'required');
-        $this->form_validation->set_rules('foto', 'foto', 'required');
+        // $this->form_validation->set_rules('foto', 'foto', 'required');
         $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
         $this->form_validation->set_rules('kategori', 'kategori', 'required');
         $this->form_validation->set_rules('iduser', 'iduser', 'required');
-        if ($this->form_validation->run()==FALSE){
+        // if ($this->form_validation->run()==FALSE){
+        //     $this->load->view('template/user/header_user',$data);
+        //     $this->load->view('user/tambah_ide',$data);
+        //     $this->load->view('template/user/footer_user');
+        // }else{
+        //     $this->user_model->tambahIde();
+        //     $this->session->set_flashdata('flash-data','ditambahkan');
+        //     redirect('user','refresh');
+        // }
+
+        if ($this->form_validation->run() == TRUE) {
+            //konfigurasi upload file
+            $config['upload_path'] 		= './uploads/';
+            $config['allowed_types']	= 'gif|jpg|png';
+            $config['max_size']			= 2000;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+
+                if ($this->user_model->tambahIde($this->upload->data()) == TRUE) {
+                    $this->session->set_flashdata('notif', 'TambLaporan berhasil!');
+                    redirect('user','refresh');
+                } else {
+                    $this->session->set_flashdata('notif', 'Tambah laporan gagal!');
+                    $this->load->view('template/user/header_user');
+                    $this->load->view('user/tambah_ide');
+                    $this->load->view('template/user/footer_user');
+                }
+            } else {
+                $this->session->set_flashdata('notif', $this->upload->display_errors());
+                $this->load->view('template/user/header_user');
+                $this->load->view('user/tambah_ide');
+                $this->load->view('template/user/footer_user');
+            }
+        } 
+
+        else{
+            $this->session->set_flashdata('notif', validation_errors());
             $this->load->view('template/user/header_user',$data);
             $this->load->view('user/tambah_ide',$data);
             $this->load->view('template/user/footer_user');
-        }else{
-            $this->user_model->tambahIde();
-            $this->session->set_flashdata('flash-data','ditambahkan');
-            redirect('user','refresh');
         }
+        } 
+         else {
+			redirect('login');
+		}
     }
 
     public function detail_ide($id_idebisnis) {
