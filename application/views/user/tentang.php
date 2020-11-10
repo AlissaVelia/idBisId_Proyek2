@@ -18,16 +18,16 @@
           <div class="col-10 col-xl-10 d-none d-xl-block">
             <nav class="site-navigation text-right" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="<?=base_url()?>/user/index">Beranda</a></li>
+                <li><a href="<?=base_url()?>user/index">Beranda</a></li>
                 <li>
-                  <a href="<?=base_url()?>/user/ide_bisnis">Ide Bisnis</a>
+                  <a href="<?=base_url()?>user/ide_bisnis">Ide Bisnis</a>
                 </li>
-                <li><a href="<?=base_url()?>/user/daftar_pelatihan">Pelatihan</a></li>
-                <li class="active"><a href="<?=base_url()?>/user/tentang">Tentang</a></li>
-                <li><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
+                <li><a href="<?=base_url()?>user/daftar_pelatihan">Pelatihan</a></li>
+                <li class="active"><a href="<?=base_url()?>user/tentang">Tentang</a></li>
+                <li><a href="<?=base_url()?>user/kontak">Kontak</a></li>
                 <li>
                   <?php if ($this->session->userdata('status')=="login") {;?>
-                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                      <a href="<?=base_url()?>user/profil_user/<?= $this->session->userdata('user')?>">Hi, <?php echo $this->session->userdata('user'); ?></a>
                   <?php }?>
                   <?php if ($this->session->userdata('status')!="login"){?>
                       <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
@@ -60,13 +60,10 @@
           <div class="col-lg-6 col-md-12">
             <div class="bg-white pl-lg-5 pl-0  pb-lg-5 pb-0">
             <h2 class="font-weight-bold text-black" data-aos="fade">- Tentang Kami -</h2>
-            <p><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur atque perferendis, laudantium quod architecto velit ad officiis facere eveniet in fuga fugiat delectus rerum doloribus quos consectetur unde, expedita, quibusdam corporis impedit quia sequi aliquid sit. Ducimus labore molestias odio nam necessitatibus laboriosam vero saepe enim nobis. Repudiandae quidem, sint earum dolorum consequuntur dignissimos excepturi mollitia omnis aliquid, corporis, unde!</p>
+            <p><br><strong>idBisId</strong> merupakan sebuah website yang menjadi media antara lembaga pelatihan virtual dengan orang-orang yang mebutuhkan ide bisnis maupun orang-orang yang ingin meningkatkan skill mereka. Website ini akan menyediakan ide-ide dan beberapa pilihan pelatihan kerja bagi para pencari kerja. Nantinya pelatihan akan dilakukan secara online dengan batuan lembaga pelatihan yang terpecaya. Pelatihan secara online ini bisa diakses dimana saja dan kapan saja.</p>
             <ul class="site-block-check">
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Dicta doloribus veniam impedit, enim!</li>
-              <li>Quod, facilis cupiditate repellat voluptas.</li>
-              <li>Quae impedit id maxime fugiat.</li>
-              <li>Esse aut iste dolor. In.</li>
+              <li>Ide Bisnis</li>
+              <li>Pelatihan Kerja</li>
             </ul>
             </div>
           </div>
@@ -77,7 +74,7 @@
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center">
             <h2 class="font-weight-bold text-black" data-aos="fade"><br>- Tim idBisid -</h2>
-            <p><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum magnam illum maiores adipisci pariatur, eveniet.</p>
+            <p><br>Tim inti pada pengembangan sistem ini terdiri dari lima orang yang solid ihuy, yaitu:</p>
           </div>
         </div>
         <div class="row top-destination" style="margin-left:120px;">

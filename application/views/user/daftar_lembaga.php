@@ -28,7 +28,7 @@
                 <li><a href="<?=base_url()?>user/kontak">Kontak</a></li>
                 <li>
                   <?php if ($this->session->userdata('status')=="login") {;?>
-                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                      <a href="<?=base_url()?>user/profil_user/<?= $this->session->userdata('user')?>">Hi, <?php echo $this->session->userdata('user'); ?></a>
                   <?php }?>
                   <?php if ($this->session->userdata('status')!="login"){?>
                       <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
@@ -69,7 +69,6 @@
                  </div> -->
                </div>
                <div class="job-post-item-body d-block d-md-flex">
-                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span>  <b>3</b> pelatihan</div>
                  <div><span class="fl-bigmug-line-big104"></span> <span><?= $lb['alamat'];?></span></div>
                </div>
               </div>

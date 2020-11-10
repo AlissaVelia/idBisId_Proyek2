@@ -19,16 +19,16 @@
           <div class="col-10 col-xl-10 d-none d-xl-block">
             <nav class="site-navigation text-right" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="<?=base_url()?>/user/index">Beranda</a></li>
+                <li><a href="<?=base_url()?>user/index">Beranda</a></li>
                 <li>
-                  <a href="<?=base_url()?>/user/ide_bisnis">Ide Bisnis</a>
+                  <a href="<?=base_url()?>user/ide_bisnis">Ide Bisnis</a>
                 </li>
-                <li><a href="<?=base_url()?>/user/daftar_pelatihan">Pelatihan</a></li>
-                <li><a href="<?=base_url()?>/user/tentang">Tentang</a></li>
-                <li><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
+                <li><a href="<?=base_url()?>user/daftar_pelatihan">Pelatihan</a></li>
+                <li><a href="<?=base_url()?>user/tentang">Tentang</a></li>
+                <li><a href="<?=base_url()?>user/kontak">Kontak</a></li>
                 <li>
                   <?php if ($this->session->userdata('status')=="login") {;?>
-                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                      <a href="<?=base_url()?>user/profil_user/<?= $this->session->userdata('user')?>">Hi, <?php echo $this->session->userdata('user'); ?></a>
                   <?php }?>
                   <?php if ($this->session->userdata('status')!="login"){?>
                       <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
@@ -51,30 +51,35 @@
         <p class="mb-0 unit-6"><a href="#">Beranda</a> <span class="sep">></span> <span>Ubah Ide Bisnis</span></p>
       </div>
     </div>
+    <?php if(validation_errors()) { ?>
+      <div class="alert alert-danger" role="alert">
+        <?= validation_errors() ?>
+      </div>
+    <?php } ?>
 
     <!-- FORM PENAMBAHAN -->
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-12 mb-5">
-            <form action="#" class="p-5 bg-white" method="post" enctype="multipart/form-data">
+            <form action="" class="p-5 bg-white" method="post" enctype="multipart/form-data">
             <h4><strong><center>- Ubah Ide Bisnis Anda -</center></strong></h4><br>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Judul Ide Bisnis</label>
-                  <input type="text" id="fullname" class="form-control" value="Ternak Lele">
+                  <input type="text" name="judul" id="judul" class="form-control" value="<?= $ide_bisnis['judul'];?>">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Deskripsi Ide Bisnis</label>
-                  <textarea name="deskripsi" class="form-control" id="" cols="30" rows="5" value="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, iure beatae! Voluptas tempora doloremque atque repudiandae maiores odio magni. Illo ut nihil officia numquam in. Deleniti pariatur at minima quaerat!"></textarea>
+                  <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="5" value=""><?php echo $ide_bisnis['deskripsi']?></textarea>
                 </div>
               </div>
               <div class="row form-group mb-5">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Gambar : </label>
-                  <input type="file" id="fullname" class="form-control">
+                  <input type="file" id="foto" name="foto" class="form-control">
                   <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                 </div>
               </div>

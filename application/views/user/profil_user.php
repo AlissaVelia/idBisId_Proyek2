@@ -19,16 +19,16 @@
           <div class="col-10 col-xl-10 d-none d-xl-block">
             <nav class="site-navigation text-right" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="<?=base_url()?>/user/index">Beranda</a></li>
+                <li><a href="<?=base_url()?>user/index">Beranda</a></li>
                 <li>
-                  <a href="<?=base_url()?>/user/ide_bisnis">Ide Bisnis</a>
+                  <a href="<?=base_url()?>user/ide_bisnis">Ide Bisnis</a>
                 </li>
-                <li><a href="<?=base_url()?>/user/daftar_pelatihan">Pelatihan</a></li>
-                <li><a href="<?=base_url()?>/user/tentang">Tentang</a></li>
-                <li><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
+                <li><a href="<?=base_url()?>user/daftar_pelatihan">Pelatihan</a></li>
+                <li><a href="<?=base_url()?>user/tentang">Tentang</a></li>
+                <li><a href="<?=base_url()?>user/kontak">Kontak</a></li>
                 <li class="active">
                   <?php if ($this->session->userdata('status')=="login") {;?>
-                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                      <a href="<?=base_url()?>user/profil_user/<?= $this->session->userdata('user')?>">Hi, <?php echo $this->session->userdata('user'); ?></a>
                   <?php }?>
                   <?php if ($this->session->userdata('status')!="login"){?>
                       <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
@@ -56,22 +56,22 @@
     <div class="container">
       <div class="profile">
         <div class="profile-image">
-          <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+          <img src="<?=base_url()?>/upload/user/<?= $user['foto'];?>" alt="" width="148px" height="140px">
         </div>
         <div class="profile-user-settings">
-          <h4 class="profile-user-name">shevaputriw</h4>
-          <a href="<?=base_url()?>/user/ubah_profil_user"><button class="btn profile-edit-btn">Ubah Profil</button></a>
-          <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
-          <a href="<?=base_url()?><?= 'login/logout' ?>"><button class="btn profile-edit-btn">Logout</button></a>
-          <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
-        </div>
+          <h4 class="profile-user-name"><?= $user['nama'];?></h4>
+          <?php if ($this->session->userdata('user') == $user['username']) {?>
+            <a href="<?=base_url()?>/user/ubah_profil_user/<?= $user['username'];?>/<?= $user['id_user'];?>"><button class="btn profile-edit-btn">Ubah Profil</button></a>
+            <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+            <a href="<?=base_url()?><?= 'login/logout' ?>"><button class="btn profile-edit-btn">Logout</button></a>
+            <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+        
+          <?php }?>
+          </div>
         <div class="profile-stats">
           <ul>
-            <li><span class="profile-stat-count">4</span> Ide Bisnis</li>
+            <li><span class="profile-stat-count"><?= $user['jmlide'];?></span> Ide Bisnis</li>
           </ul>
-        </div>
-        <div class="profile-bio">
-          <p><span class="profile-real-name">shevaputriw</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
         </div>
       </div>
     </div>
@@ -80,15 +80,22 @@
       <div class="container">
           <center><h2 class="text-black">- Ide Bisnis -</h2></center><br>
         <div class="row">
+        <?php if(empty($ide_bisnis)):?>
+          <center>
+            <h5>Belum ada ide bisnis</h5>
+          </center>
+        <?php endif; ?>
           <!-- 1 -->
+          <?php foreach ($ide_bisnis as $ide) :?>
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
             <div class="position-relative unit-8">
-              <a href="<?=base_url()?>/user/detail_ide_user" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-              <span class="d-block text-gray-500 text-normal small mb-3">Jan 20th, 2019 <span class="mx-2">&bullet;</span>&nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-              <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide_user" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
+              <a href="<?=base_url()?>/user/detail_ide_user/<?= $ide['oleh'];?>/<?= $ide['id_idebisnis'];?>" class="mb-3 d-block img-a"><img src="<?=base_url()?>/uploads/<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded"></a>      
+              <span class="d-block text-gray-500 text-normal small mb-3"><span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;<?= $ide['suka'];?></span>
+              <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide_user/<?= $ide['oleh'];?>/<?= $ide['id_idebisnis'];?>" class="text-black"><?= $ide['judul'];?></a></h2>
+              <p><?= $ide['deskripsi'];?></p>
             </div>
           </div>
+        <?php endforeach; ?>
         </div>
 
           <!-- NOMOR IDE BISNIS -->
@@ -120,23 +127,30 @@
           </div>
         </div>
         <div class="row hosting">
+        <?php if(empty($pelatihan)):?>
+          <center>
+            <h5>Belum mengikuti pelatihan</h5>
+          </center>
+        <?php endif; ?>
         <!-- 1 -->
+        <?php foreach ($pelatihan as $pl) :?>
           <div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="100" >
             <div class="unit-3 h-100 bg-white">
               <div class="d-flex align-items-center mb-3 unit-3-heading">
                 <div class="unit-3-icon-wrap mr-4">
                   <svg class="unit-3-svg" xmlns="<?=base_url()?>/http://www.w3.org/2000/svg" width="59px" height="68px">
                     <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span class="unit-3-icon icon fl-bigmug-line-portfolio23"></span>
-                </div>
-                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan" style="color:black;">Desain Grafis</a></h2>
+                  </svg><span><img src="<?=base_url()?>/upload/lembaga/foto_lembaga/<?= $pl['logo'];?>" width="48px" height="58px"></span>
+                  </div>
+                <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan/<?= $pl['id_pelatihan'];?>" style="color:black;"><?= $pl['nama_pelatihan'];?></a></h2>
               </div>
               <div class="unit-3-body">
-                <p><a href="<?=base_url()?>/user/detail_pelatihan" style="color:#b3b3b3;">Lorem ipsum dolor sit amet consectetur is a nice adipisicing elita ssumenda a similique perferendis dolorem eos.csdacsacs</a></p>
+                <p><a href="<?=base_url()?>/user/detail_pelatihan/<?= $pl['id_pelatihan'];?>" style="color:#b3b3b3;"><?= $pl['desc'];?></a></p>
                 <p style="margin-left: 160px;"><a href="<?=base_url()?>/user/penilaian" style="color:#4d90fe;"><b>Beri Penilaian -></b></a></p>
               </div>
             </div>
           </div>
+          <?php endforeach; ?>
         </div>
 
         <!-- NOMOR PELATIHAN -->
@@ -164,14 +178,23 @@
         <center><h2 class="text-black">- Ide Bisnis <strong>Favorit -</strong></h2></center><br>
         <div class="row">
         <!-- 1 -->
+        <?php if(empty($ide_fav)):?>
+          <center>
+            <h5>Belum ada favorit</h5>
+          </center>
+        <?php endif; ?>
+        <?php foreach ($ide_fav as $ide) :?>
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
             <div class="position-relative unit-8">
-            <a href="<?=base_url()?>/user/detail_ide" class="mb-3 d-block img-a"><img src="<?= base_url()?>/assets/user2/images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-            <span class="d-block text-gray-500 text-normal small mb-3">Oleh <a href="<?=base_url()?>/user/profil_user">Allisa</a> <span class="mx-2">&bullet;</span> Jan 20th, 2019 <span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;3</span>
-            <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide" class="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit</a></h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur nostrum asperiores corrupti delectus.</p>
+            <div class="position-relative unit-8">
+              <a href="<?=base_url()?>/user/detail_ide/<?= $ide['id_idebisnis'];?>" class="mb-3 d-block img-a"><img src="<?=base_url()?>/uploads/<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded"></a>
+              <span class="d-block text-gray-500 text-normal small mb-3"><span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;<?= $ide['suka'];?></span>
+              <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide/<?= $ide['id_idebisnis'];?>" class="text-black"><?= $ide['judul'];?></a></h2>
+              <p><?= $ide['deskripsi'];?></p>
+            </div>
             </div>
           </div>
+        <?php endforeach; ?>
         </div>
 
           <!-- NOMOR IDE BISNIS -->

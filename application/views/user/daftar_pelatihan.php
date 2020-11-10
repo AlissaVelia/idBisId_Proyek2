@@ -28,7 +28,7 @@
                 <li><a href="<?=base_url()?>user/kontak">Kontak</a></li>
                 <li>
                   <?php if ($this->session->userdata('status')=="login") {;?>
-                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                      <a href="<?=base_url()?>user/profil_user/<?= $this->session->userdata('user')?>">Hi, <?php echo $this->session->userdata('user'); ?></a>
                   <?php }?>
                   <?php if ($this->session->userdata('status')!="login"){?>
                       <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
@@ -102,8 +102,9 @@
                 <div class="unit-3-icon-wrap mr-4">
                 <svg class="unit-3-svg" xmlns="<?=base_url()?>/http://www.w3.org/2000/svg" width="59px" height="68px">
                     <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
-                  </svg><span><img src="<?= $pl['logo'];?>"></span>
-                  </div>
+                </svg >
+                <span><img src="<?=base_url()?>/upload/lembaga/foto_lembaga/<?= $pl['logo'];?>" width="48px" height="58px"></span>
+                </div>
                 <h2 class="h5"><a href="<?=base_url()?>/user/detail_pelatihan/<?= $pl['id_pelatihan'];?>" style="color:black;"><?= $pl['nama_pelatihan'];?></a></h2>
               </div>
               <div class="unit-3-body">

@@ -28,7 +28,7 @@
                 <li><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
                 <li>
                   <?php if ($this->session->userdata('status')=="login") {;?>
-                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                      <a href="<?=base_url()?>user/profil_user/<?= $this->session->userdata('user')?>">Hi, <?php echo $this->session->userdata('user'); ?></a>
                   <?php }?>
                   <?php if ($this->session->userdata('status')!="login"){?>
                       <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>
@@ -57,42 +57,42 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-12 mb-5">
-            <form action="#" class="p-5 bg-white" method="post" enctype="multipart/form-data">
+            <form action="" class="p-5 bg-white" method="post" enctype="multipart/form-data">
             <h4><strong><center>- Update Profil Kamu -</center></strong></h4><br>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Nama Anda</label>
-                  <input type="text" id="fullname" class="form-control" value="Sheva Putri Wahidah">
+                  <input type="text" id="nama" name="nama" class="form-control" value="<?= $user['nama'];?>">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">E-mail</label>
-                  <input type="email" id="fullname" class="form-control" value="shevapw@gmail.com">
+                  <input type="email" id="email" name="email" class="form-control" value="<?= $user['email'];?>">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Telepon</label>
-                  <input type="text" id="fullname" class="form-control" value="085706643004">
+                  <input type="text" id="telepon" name="telepon" class="form-control" value="<?= $user['no_telp'];?>">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Username</label>
-                  <input type="text" id="fullname" class="form-control" value="shevaputrie">
+                  <input type="text" id="username" name="username" class="form-control" value="<?= $user['username'];?>">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Password</label>
-                  <input type="password" id="fullname" class="form-control" value="idBisid">
+                  <input type="password" id="pswd" name="pswd" class="form-control" value="<?= $user['password'];?>">
                 </div>
               </div>
               <div class="row form-group mb-5">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Ubah Foto Profil : </label>
-                  <input type="file" id="fullname" class="form-control">
+                  <input type="file" id="foto" name="foto" class="form-control">
                   <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                 </div>
               </div>

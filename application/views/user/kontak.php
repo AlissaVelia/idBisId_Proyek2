@@ -18,16 +18,16 @@
           <div class="col-10 col-xl-10 d-none d-xl-block">
             <nav class="site-navigation text-right" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="<?=base_url()?>/user/index">Beranda</a></li>
+                <li><a href="<?=base_url()?>user/index">Beranda</a></li>
                 <li>
-                  <a href="<?=base_url()?>/user/ide_bisnis">Ide Bisnis</a>
+                  <a href="<?=base_url()?>user/ide_bisnis">Ide Bisnis</a>
                 </li>
-                <li><a href="<?=base_url()?>/user/daftar_pelatihan">Pelatihan</a></li>
-                <li><a href="<?=base_url()?>/user/tentang">Tentang</a></li>
-                <li class="active"><a href="<?=base_url()?>/user/kontak">Kontak</a></li>
+                <li><a href="<?=base_url()?>user/daftar_pelatihan">Pelatihan</a></li>
+                <li><a href="<?=base_url()?>user/tentang">Tentang</a></li>
+                <li class="active"><a href="<?=base_url()?>user/kontak">Kontak</a></li>
                 <li>
                   <?php if ($this->session->userdata('status')=="login") {;?>
-                      <a href="<?=base_url()?>user/profil_user">Hi, <?php echo $this->session->userdata('user'); ?></a>
+                      <a href="<?=base_url()?>user/profil_user/<?= $this->session->userdata('user')?>">Hi, <?php echo $this->session->userdata('user'); ?></a>
                   <?php }?>
                   <?php if ($this->session->userdata('status')!="login"){?>
                       <a href="<?=base_url()?>login/index"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2"></span>Login</span></a>

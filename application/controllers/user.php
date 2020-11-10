@@ -25,18 +25,6 @@ class user extends CI_Controller {
         $this->load->view('template/user/footer_user');
     }
 
-    // public function cari()
-    // {
-    //     $data['title'] = 'Pencarian - idBisid';
-    //     $data['ide_bisnis']=$this->user_model->cariIdeBisnis();
-
-    //     $this->load->view('template/user/header_user',$data);
-    //     $this->load->view('user/cari',$data);
-    //     $this->load->view('template/user/footer_user');
-
-    //     redirect('cari','refresh');
-    // }
-
     public function kontak() {
         $data['title'] = 'Kontak - idBisid';
         $this->load->view('template/user/header_user',$data);
@@ -66,12 +54,13 @@ class user extends CI_Controller {
     }
 
     public function halaman_tambah_ide() {
-            $this->load->view('template/user/header_user');
-            $this->load->view('user/tambah_ide');
-            $this->load->view('template/user/footer_user');
+        $data['title'] = 'Tambah Ide Bisnis - idBisid';
+        $this->load->view('template/user/header_user');
+        $this->load->view('user/tambah_ide');
+        $this->load->view('template/user/footer_user');
     }
     public function tambah_ide() {
-        if ($this->session->userdata('logged_in') == TRUE) {
+        if ($this->session->userdata('status') == "login") {
         // $this->load->library('form_validation');
         // $data['title'] = 'Tambahkan Ide - idBisid';
         $this->form_validation->set_rules('judul', 'judul', 'required');
@@ -199,32 +188,127 @@ class user extends CI_Controller {
     //     $this->load->view('template/user/footer_user');
     // }
 
-    public function profil_user() {
-        $data['title'] = 'Profil Kamu - idBisid';
+    public function profil_user($username) {
+        $data['title'] = 'Profil Pengguna - idBisid';
+
+        $data['user']=$this->user_model->tampilProfilUser($username);
+        $data['ide_bisnis']=$this->user_model->tampilIdbisByUser($username);
+        $data['pelatihan']=$this->user_model->tampilPelatihanUser($username);
+        $data['ide_fav']=$this->user_model->tampilIdbisFav($username);
+        
         $this->load->view('template/user/header_profil_user',$data);
         $this->load->view('user/profil_user',$data);
         $this->load->view('template/user/footer_user');
     }
 
-    public function ubah_profil_user() {
+    public function ubah_profil_user($oleh, $id_user) {
         $data['title'] = 'Update Profil Kamu - idBisid';
-        $this->load->view('template/user/header_user',$data);
-        $this->load->view('user/ubah_profil_user',$data);
-        $this->load->view('template/user/footer_user');
+        $data['user']=$this->user_model->tampilDetailProfilUser();
+        
+        if ($this->session->userdata('user') == $oleh) {
+            $this->form_validation->set_rules('nama', 'nama', 'required');
+            $this->form_validation->set_rules('email', 'email', 'required');
+            $this->form_validation->set_rules('telepon', 'telepon', 'required');
+            $this->form_validation->set_rules('username', 'username', 'required');
+            $this->form_validation->set_rules('pswd', 'pswd', 'required');
+    
+            if ($this->form_validation->run() == TRUE) {
+                //konfigurasi upload file
+                $config['upload_path'] 		= './upload/user';
+                $config['allowed_types']	= 'gif|jpg|png';
+                $config['max_size']			= 2000;
+                $this->load->library('upload', $config);
+    
+                if ($this->upload->do_upload('foto')) {
+    
+                    if ($this->user_model->editProfilUser($id_user, $this->upload->data()) == TRUE) {
+                        $this->session->set_flashdata('notif', 'Edit berhasil!');
+                        redirect('user/profil_user/'.$this->input->post('username') ,'refresh');
+                    } else {
+                        $this->session->set_flashdata('notif', 'Edit gagal!');
+                        $this->load->view('template/user/header_user',$data);
+                        $this->load->view('user/ubah_profil_user',$data);
+                        $this->load->view('template/user/footer_user');
+                    }
+                } else {
+                    $this->session->set_flashdata('notif', $this->upload->display_errors());
+                    $this->load->view('template/user/header_user',$data);
+                    $this->load->view('user/ubah_profil_user',$data);
+                    $this->load->view('template/user/footer_user');
+                }
+            } 
+    
+            else{
+                $this->session->set_flashdata('notif', validation_errors());
+                $this->load->view('template/user/header_user',$data);
+                $this->load->view('user/ubah_profil_user',$data);
+                $this->load->view('template/user/footer_user');
+            }
+        } else {
+            redirect('login');
+        }
     }
 
-    public function detail_ide_user() {
+    public function detail_ide_user($oleh, $id_idebisnis) {
         $data['title'] = 'Detail Ide Kamu - idBisid';
-        $this->load->view('template/user/header_user',$data);
-        $this->load->view('user/detail_ide_user',$data);
-        $this->load->view('template/user/footer_user');
+        // $data['ide_bisnis']=$this->user_model->tampilDetailIdeBisnis($id_idebisnis);
+        
+        if ($this->session->userdata('user') == $oleh) {
+            # code...
+            $data['ide_bisnis']=$this->user_model->tampilDetailIdeBisnisByUser($oleh, $id_idebisnis);
+
+            $this->load->view('template/user/header_user',$data);
+            $this->load->view('user/detail_ide_user',$data);
+            $this->load->view('template/user/footer_user');
+        }else {
+            redirect('user/detail_ide/'.$id_idebisnis);
+        }
+        
+        
     }
 
-    public function ubah_ide() {
+    public function ubah_ide($oleh, $id_idebisnis) {
         $data['title'] = 'Ubah Ide Kamu - idBisid';
-        $this->load->view('template/user/header_user',$data);
-        $this->load->view('user/ubah_ide',$data);
-        $this->load->view('template/user/footer_user');
+        if ($this->session->userdata('user') == $oleh) {
+            $data['ide_bisnis']=$this->user_model->tampilDetailIdeBisnisByUser($oleh, $id_idebisnis);
+            $this->form_validation->set_rules('judul', 'judul', 'required');
+            $this->form_validation->set_rules('deskripsi', 'deskripsi', 'required');
+    
+            if ($this->form_validation->run() == TRUE) {
+                //konfigurasi upload file
+                $config['upload_path'] 		= './uploads/';
+                $config['allowed_types']	= 'gif|jpg|png';
+                $config['max_size']			= 2000;
+                $this->load->library('upload', $config);
+    
+                if ($this->upload->do_upload('foto')) {
+    
+                    if ($this->user_model->editIde($id_idebisnis, $this->upload->data()) == TRUE) {
+                        $this->session->set_flashdata('notif', 'Edit berhasil!');
+                        redirect('user/profil_user/'.$oleh ,'refresh');
+                    } else {
+                        $this->session->set_flashdata('notif', 'Edit gagal!');
+                        $this->load->view('template/user/header_user',$data);
+                        $this->load->view('user/ubah_ide',$data);
+                        $this->load->view('template/user/footer_user');
+                    }
+                } else {
+                    $this->session->set_flashdata('notif', $this->upload->display_errors());
+                    $this->load->view('template/user/header_user',$data);
+                    $this->load->view('user/ubah_ide', $data);
+                    $this->load->view('template/user/footer_user');
+                }
+            } 
+    
+            else{
+                $this->session->set_flashdata('notif', validation_errors());
+                $this->load->view('template/user/header_user',$data);
+                $this->load->view('user/ubah_ide',$data);
+                $this->load->view('template/user/footer_user');
+            }
+        } else {
+            redirect('login');
+        }
     }
 
     public function chatting() {
