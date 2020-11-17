@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon">
           <img src="<?= base_url()?>/assets/admin/img/logo/logo2.png">
         </div>
-        <div class="sidebar-brand-text mx-3">Lembaga</div>
+        <div class="sidebar-brand-text mx-3">Hi,  </div>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
@@ -16,10 +16,10 @@
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
-        Lembaga Pelatihan
+        Lembaga Pelatihan 
       </div>
         <li class="nav-item">
-        <a class="nav-link" href="<?=base_url();?>/lembaga/data_lembaga">
+        <a class="nav-link" href="<?=base_url();?>lembaga/data_lembaga"> 
           <i class="fas fa-fw fa-palette"></i>
           <span>Lengkapi Data Lembaga</span>
         </a>
@@ -30,9 +30,19 @@
         Kategori
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="<?=base_url();?>/lembaga/kategori_pelatihan">
+        <a class="nav-link" href="<?=base_url();?>lembaga/kategori_pelatihan">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Kategori Pelatihan</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Pelatihan
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=base_url();?>lembaga/pelatihan">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Pelatihan</span>
         </a>
       </li>
       <hr class="sidebar-divider">
@@ -211,8 +221,10 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="<?= base_url()?>/assets/admin/img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">IdBiSid</span>
-              </a>
+
+                  <span class="ml-2 d-none d-lg-inline text-white small"><?php echo $this->session->userdata('nama_lembaga'); ?></a></span>
+               
+               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>

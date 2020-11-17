@@ -12,12 +12,12 @@
                   <div class="text-center">
                     <b><h1 class="h4 text-gray-900 mb-4">Login Lembaga Pelatihan - idBisid</h1></b>
                   </div>
-                  <form class="user">
+                  <form  method="post" action="<?php echo base_url(); ?>index.php/login/proses_login_lembaga">
                     <div class="form-group">
-                      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Username" name="unamelembaga">
+                      <input type="text" class="form-control" id="exampleInputEmail" placeholder="Username" name="username">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="pwdlembaga">
+                      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="password">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
@@ -27,7 +27,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-primary btn-block">Login</button>
+                    <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block">
                     </div>
                   </form>
                   

@@ -40,6 +40,8 @@
                 $this->load->view('login/index',$data);
                 $this->load->view('template/login/footer_login');
             }
+
+
         }
 
         public function logout()
@@ -92,24 +94,47 @@
         }
 
         public function proses_login_lembaga() {
-            $username = htmlspecialchars($this->input->post('unamelembaga'));
-            $password = htmlspecialchars($this->input->post('pwdlembaga'));
-            $cek_login_lembaga = $this->login_model->login_lembaga($username, $password);
+            // $username = htmlspecialchars($this->input->post('unamelembaga'));
+            // $password = htmlspecialchars($this->input->post('pwdlembaga'));
+            // $cek_login_lembaga = $this->login_model->login_lembaga($username, $password);
 
-            if($cek_login_lembaga) {
-                foreach (cek_login_lembaga as $row);
-                // untuk menampilkan nama lembaga yang sedang login
-                $this->session->set_userdata('lembaga_pelatihan', $row->nama_lembaga);
-                $this->session->set_userdata('id_lembaga', $row->id_lembaga);
-                redirect('lembaga');
-            }
-            else {
-                $data['pesan'] = 'Username dan Password Anda Salah';
-                $data['title'] = 'Login Lembaga Pelatihan - idBisid';
-                $this->load->view('template/login/header_login',$data);
-                $this->load->view('login/login_lembaga',$data);
-                $this->load->view('template/login/footer_login');
-            }
+            // if($cek_login_lembaga) {
+            //     foreach (cek_login_lembaga as $row);
+            //     // untuk menampilkan nama lembaga yang sedang login
+            //     $this->session->set_userdata('nama_lembaga', $row->nama_lembaga);
+            //     $this->session->set_userdata('id_lembaga', $row->id_lembaga);
+                
+            //     $this->session->set_userdata('status',"login");
+            //     redirect('lembaga');
+            // }
+            // else {
+            //     $data['pesan'] = 'Username dan Password Anda Salah';
+            //     $data['title'] = 'Login Lembaga Pelatihan - idBisid';
+            //     $this->load->view('template/login/header_login',$data);
+            //     $this->load->view('login/login_lembaga',$data);
+            //     $this->load->view('template/login/footer_login');
+            // }
+
+            
+                
+		    if ($this->input->post('submit')) {
+
+			$this->form_validation->set_rules('username', 'username', 'trim|required');
+			$this->form_validation->set_rules('password', 'password', 'trim|required');
+
+			if ($this->form_validation->run() == TRUE) {
+
+				if ($this->login_model->login_lembaga() == TRUE) {
+					redirect('lembaga');
+				} else {
+					$data['notif'] = 'Login gagal';
+					redirect('login/login_lembaga');
+				}
+			} else {
+				$data['notif'] = validation_errors();
+				redirect('login/login_lembaga', $data);
+			}
+		}
         }
 
         public function register_user() {

@@ -63,19 +63,44 @@
             }
         }
 
-        function login_lembaga($username, $password) {
-            $this->db->select('id_lembaga, username, password');
-            $this->db->from('lembaga_pelatihan');
-            $this->db->where('username', $username);
-            $this->db->where('password', $password);
-            $this->db->limit(1);
+        // function login_lembaga($username, $password) {
+        //     $this->db->select('id_lembaga, username, password');
+        //     $this->db->from('lembaga_pelatihan');
+        //     $this->db->where('username', $username);
+        //     $this->db->where('password', $password);
+        //     $this->db->limit(1);
 
-            $query = $this->db->get();
-            if($query->num_rows()==1) {
-                return $query->result();
-            }
-            else {
-                return false;
+        //     $query = $this->db->get();
+        //     if($query->num_rows()==1) {
+        //         return $query->result();
+        //     }
+        //     else {
+        //         return false;
+        //     }
+        // }
+
+        public function login_lembaga()
+        {
+            $username  = $this->input->post('username');
+            $password = $this->input->post('password');
+    
+            $query = $this->db->where('username', $username)
+                ->where('password', $password)
+                ->get('lembaga_pelatihan');
+            if ($query->num_rows() > 0) {
+                $user = array_shift($query->result_array());
+                $data = array(
+                    'id_lembaga' => $user['id_lembaga'],
+                    'nama_lembaga' => $user['nama_lembaga'],
+                    'username' => $user['username'],
+                    'password' => $user['password'],
+                    'logged_in' => TRUE
+                );
+    
+                $this->session->set_userdata($data);
+                return TRUE;
+            } else {
+                return FALSE;
             }
         }
 
