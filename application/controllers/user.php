@@ -30,7 +30,64 @@ class user extends CI_Controller {
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/kontak',$data);
         $this->load->view('template/user/footer_user');
-    }
+
+        $this->form_validation->set_rules('nama', 'nama', 'required');
+        $this->form_validation->set_rules('from', 'from', 'required');
+        $this->form_validation->set_rules('subject', 'subject', 'required');
+        $this->form_validation->set_rules('message', 'message', 'required');
+
+        if ($this->form_validation->run() == TRUE){
+            // $this->load->helper(array('form', 'url'));
+            $this->load->library('email');
+
+            //konfigurasi email
+            $config = array();
+            $config['charset'] = 'utf-8';
+            $config['useragent'] = 'idBisId'; //bebas sesuai keinginan kamu
+            $config['protocol']= "smtp";
+            $config['mailtype']= "html";
+            $config['smtp_host']= "ssl://smtp.gmail.com";
+            $config['smtp_port']= "465";
+            $config['smtp_timeout']= "5";
+            $config['smtp_user']= "idbisid97@gmail.com"; //isi dengan email anda
+            $config['smtp_pass']= "idbis1831710"; // isi dengan password dari email anda
+            $config['crlf']="\r\n";
+            $config['newline']="\r\n";
+
+            $config['wordwrap'] = TRUE;
+
+            //memanggil library email dan set konfigurasi untuk pengiriman email
+
+            $this->email->initialize($config);
+            //konfigurasi pengiriman kotak di view ke pengiriman email di gmail
+            $this->email->from($this->input->post('from'));
+            $this->email->to('idbisid97@gmail.com');
+            $this->email->subject($this->input->post('subject'));
+            $this->email->message($this->input->post('message'));
+
+            // proses uploads
+
+            // $this->upload->initialize(array(
+            // "upload_path" => "./uploads/",
+            // "allowed_types" => "*"
+            // ));
+            $config['upload_path'] 		= './uploads/';
+            $config['allowed_types']	= '*';
+            $this->load->library('upload', $config);
+
+            // pernyataan jika pengiriman berhasil atau tidak
+
+            if($this->email->send())
+            {
+                $this->session->set_flashdata('notif', 'Email berhasil dikirim');
+                redirect('user/kontak', 'refresh');
+            }else
+            {
+                $this->session->set_flashdata('notif', 'Email gagal dikirim');
+                redirect('user');
+            }
+        }
+    }    
 
     public function tentang() {
         $data['title'] = 'Tentang - idBisid';
