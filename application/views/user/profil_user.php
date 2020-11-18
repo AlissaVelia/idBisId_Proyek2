@@ -89,7 +89,7 @@
           <?php foreach ($ide_bisnis as $ide) :?>
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
             <div class="position-relative unit-8">
-              <a href="<?=base_url()?>/user/detail_ide_user/<?= $ide['oleh'];?>/<?= $ide['id_idebisnis'];?>" class="mb-3 d-block img-a"><img src="<?=base_url()?>/uploads/<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded"></a>      
+              <a href="<?=base_url()?>/user/detail_ide_user/<?= $ide['oleh'];?>/<?= $ide['id_idebisnis'];?>" class="mb-3 d-block img-a"><img src="<?=base_url()?>/uploads/<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded" style="width:200px;height:200px;"></a>      
               <span class="d-block text-gray-500 text-normal small mb-3"><span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;<?= $ide['suka'];?></span>
               <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide_user/<?= $ide['oleh'];?>/<?= $ide['id_idebisnis'];?>" class="text-black"><?= $ide['judul'];?></a></h2>
               <p><?= $ide['deskripsi'];?></p>
@@ -187,7 +187,7 @@
           <div class="col-md-6 mb-5 mb-lg-0 col-lg-3" data-aos="fade">
             <div class="position-relative unit-8">
             <div class="position-relative unit-8">
-              <a href="<?=base_url()?>/user/detail_ide/<?= $ide['id_idebisnis'];?>" class="mb-3 d-block img-a"><img src="<?=base_url()?>/uploads/<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded"></a>
+              <a href="<?=base_url()?>/user/detail_ide/<?= $ide['id_idebisnis'];?>" class="mb-3 d-block img-a"><img src="<?=base_url()?>/uploads/<?= $ide['foto'];?>" alt="Image" class="img-fluid rounded" style="width:200px;height:200px;"></a>
               <span class="d-block text-gray-500 text-normal small mb-3"><span class="mx-2">&bullet;</span> &nbsp;<span class="icon-heart"></span> &nbsp;<?= $ide['suka'];?></span>
               <h2 class="h5 font-weihgt-normal line-height-sm mb-3"><a href="<?=base_url()?>/user/detail_ide/<?= $ide['id_idebisnis'];?>" class="text-black"><?= $ide['judul'];?></a></h2>
               <p><?= $ide['deskripsi'];?></p>
