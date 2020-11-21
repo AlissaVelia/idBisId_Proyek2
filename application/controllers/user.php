@@ -176,9 +176,49 @@ class user extends CI_Controller {
     public function detail_ide($id_idebisnis) {
         $data['title'] = 'Detail Ide - idBisid';
         $data['ide_bisnis']=$this->user_model->tampilDetailIdeBisnis($id_idebisnis);
+        $data['fav']=$this->user_model->cekFav($id_idebisnis);
+        // echo "'<script>console.log(\"$x\")</script>'";
+        // if (!$this->user_model->cekFav($id_idebisnis)) {
+        //     $fav='0';
+        // }else {
+        //     $fav='1';
+        // }
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/detail_ide',$data);
         $this->load->view('template/user/footer_user');
+    }
+
+    public function sukaiIde($id_idebisnis, $suka)
+    {
+        if ($this->session->userdata('status') == "login") {
+            $this->user_model->suka($id_idebisnis, $suka);
+            redirect('user/detail_ide/'.$id_idebisnis, 'refresh');
+        }else {
+            # code...
+            redirect('login');
+        }
+    }
+
+    public function favoritIde($id_idebisnis)
+    {
+        if ($this->session->userdata('status') == "login") {
+            $this->user_model->fav($id_idebisnis);
+            redirect('user/detail_ide/'.$id_idebisnis, 'refresh');
+        }else {
+            # code...
+            redirect('login');
+        }
+    }
+
+    public function hapusFav($id_idebisnis)
+    {
+        if ($this->session->userdata('status') == "login") {
+            $this->user_model->hapusFav($id_idebisnis);
+            redirect('user/detail_ide/'.$id_idebisnis, 'refresh');
+        }else {
+            # code...
+            redirect('login');
+        }
     }
 
     public function daftar_pelatihan() {

@@ -242,6 +242,38 @@ class user_model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    public function suka($id_idebisnis, $suka)
+    {
+        $this->db->set('suka', $suka);
+        $this->db->where('id_idebisnis', $id_idebisnis);
+        $this->db->update('ide_bisnis');
+    }
+
+    public function fav($id_idebisnis) {
+        $id = $this->session->userdata('id_user');
+        
+            $data = array(
+                "id_user" => $id,
+                "id_idebisnis" => $id_idebisnis
+            );
+            $this->db->insert('favorit', $data);
+        
+    }
+
+    public function cekFav($id_idebisnis) {
+        $this->db->select('COUNT(id_favorit) fav');
+        $this->db->from('favorit');
+        $this->db->where('id_user', $this->session->userdata('id_user'));
+        $this->db->where('id_idebisnis', $id_idebisnis);
+        return $this->db->get()->row_array();
+    }
+
+    public function hapusFav($id_idebisnis) {
+        $this->db->where('id_user', $this->session->userdata('id_user'));
+        $this->db->where('id_idebisnis', $id_idebisnis);
+        $this->db->delete('favorit');
+    }
+
 }
 
 /* End of file user_model.php */
