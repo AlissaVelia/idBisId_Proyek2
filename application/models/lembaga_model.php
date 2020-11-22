@@ -107,16 +107,7 @@ class lembaga_model extends CI_Model {
 			->where('id_pelatihan', $id_pelatihan)
 			->get('pelatihan')
 			->row();
-
-		// $this->db->select('*');
-		// $this->db->from('pelatihan');
-		// $this->db->join('kategori', 'kategori.id_kategori = pelatihan.id_kategori');
-		// $this->db->where('pelatihan.id_pelatihan', $id_pelatihan);
-		
-		
-		// return $this->db->where('id_pelatihan', $id_pelatihan)
-        // ->get('pelatihan')
-		// ->result();
+ 
     }
     
     public function hapus_pelatihan($id_pelatihan)
@@ -172,18 +163,12 @@ class lembaga_model extends CI_Model {
 				return FALSE;
 			}
 	}
-
-	function uploadMateri() {
-		$config['upload_path'] = './upload/lembaga/materi/';
-		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		$config['file_name'] = $this->id_materi;
-		$config['overwrite'] = true;
-
-		$this->upload->initialize($config);
-		$this->load->library('upload', $config);
-		if($this->upload->do_upload('file_materi')) {
-			return $this->upload->data("file_name");
-		}
+	public function detail_materi_pelatihan_by_id($id_pelatihan)
+	{
+		
+		return $this->db->where('id_pelatihan', $id_pelatihan)
+        ->get('materi')
+        ->result();
 	}
 
 

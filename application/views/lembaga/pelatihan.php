@@ -111,7 +111,10 @@ data-target="#exampleModalScrollable" id="#modalScroll">Tambah Pelatihan</button
                                                             
                                                             <td>' . $row->harga . '</td>
                                                             <td>     <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_ubah" 
-                                                            onclick="prepare_tambah_materi(' . $row->id_pelatihan . ')">Tambah</a> </td>
+                                                            onclick="prepare_tambah_materi(' . $row->id_pelatihan . ')">Tambah</a> 
+                                                            <a href="' . base_url('index.php/lembaga/detail_materi_pelatihan/' . $row->id_pelatihan) . '" class="btn btn-success btn-sm">Lihat Materi</a>
+                                                            </td>
+                                                            
                                                             <td>
                                                             
                                                             <a href="' . base_url('index.php/lembaga/edit_data_pelatihan/' . $row->id_pelatihan) . '" class="btn btn-warning btn-sm">Ubah</a>
@@ -134,7 +137,7 @@ data-target="#exampleModalScrollable" id="#modalScroll">Tambah Pelatihan</button
       
         </div>
   
-      <!-- MODAL lihat Laporan -->
+      <!-- MODAL TAMBAH MATERI -->
       <div class="modal fade" id="modal_ubah" tabindex="-1" role="dialog" aria-labelledby="modal_ubah" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
        

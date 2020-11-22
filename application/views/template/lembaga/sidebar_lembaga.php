@@ -47,12 +47,12 @@
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
-        Materi Pelatihan
+        User Pelatihan
       </div>
       <li class="nav-item">
-        <a class="nav-link" href="<?=base_url();?>/lembaga/materi_pelatihan">
+        <a class="nav-link" href="#">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Materi Pelatihan</span>
+          <span>Pembayaran Masuk</span>
         </a>
       </li>
       <hr class="sidebar-divider">

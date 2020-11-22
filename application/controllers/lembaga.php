@@ -251,8 +251,8 @@ class lembaga extends CI_Controller {
             if ($this->form_validation->run() == TRUE) {
                 //konfigurasi upload file
                 $config['upload_path'] 		= './upload/materi';
-                $config['allowed_types']	= 'gif|jpg|png';
-                $config['max_size']			= 2000;
+                $config['allowed_types']	= 'gif|jpg|png|pdf|docx';
+                $config['max_size']			= 5000;
                 $this->load->library('upload', $config);
     
                 if ($this->upload->do_upload('file_materi')) {
@@ -276,6 +276,17 @@ class lembaga extends CI_Controller {
             }
         }
     }
+
+
+    public function detail_materi_pelatihan()
+    {
+        $id_pelatihan = $this->uri->segment(3);
+        $data['data_materi'] = $this->lembaga_model->detail_materi_pelatihan_by_id($id_pelatihan);
+        $this->load->view('template/lembaga/header_lembaga');
+        $this->load->view('template/lembaga/sidebar_lembaga');
+        $this->load->view('lembaga/materi_pelatihan',$data);
+    }
+
 
     
 }
