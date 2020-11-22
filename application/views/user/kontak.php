@@ -55,24 +55,25 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-8 mb-5">
-            <form action="#" class="p-5 bg-white">
+          <?php echo form_open_multipart('user/kontak'); ?>
+            <form action="" class="p-5 bg-white">
               <h4><strong><center>- Kontak Kami -</center></strong></h4>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Nama Lengkap</label>
-                  <input type="text" id="fullname" class="form-control" placeholder="Masukkan Nama Lengkap Anda">
+                  <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan Nama Lengkap Anda">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="font-weight-bold" for="email">Email</label>
-                  <input type="email" id="email" class="form-control" placeholder="Masukkan Alamat Email Anda">
+                  <input type="email" id="from" name="from" class="form-control" placeholder="Masukkan Alamat Email Anda">
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="email">Judul</label>
-                  <input type="text" id="subject" class="form-control" placeholder="Masukkan Judul Anda">
+                  <label class="font-weight-bold" for="email">Subject</label>
+                  <input type="text" id="subject" name="subject" class="form-control" placeholder="Masukkan Judul Anda">
                 </div>
               </div>
               <div class="row form-group">
@@ -87,6 +88,7 @@
                 </div>
               </div>
             </form>
+            <?php echo form_close();?>
           </div>
 
         <!-- INFO KONTAK -->
@@ -95,15 +97,14 @@
               <h3 class="h5 text-black mb-3">- Informasi Kontak -</h3>
               <p class="mb-0 font-weight-bold">Alamat</p>
               <p class="mb-4">Jl. Soekarno-Hatta No. 9, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141</p>
-              <p><a href="#" class="btn btn-primary  py-2 px-4 rounded-0">Lihat Peta</a></p>
               <p class="mb-0 font-weight-bold">Telepon</p>
-              <p class="mb-4"><a href="#">(0341) 404424-404425</a></p>
+              <p class="mb-4"><a href="">(0341) 404424-404425</a></p>
               <p class="mb-0 font-weight-bold">E-mail</p>
-              <p class="mb-0"><a href="#">cs@idBisid.id</a></p><br>
+              <p class="mb-0"><a href="">idbisid97@gmail.com</a></p><br>
               <p class="mb-0 font-weight-bold">Website</p>
               <p class="mb-4">www.idBisid.com</p>
               <p class="mb-0 font-weight-bold">Instagram</p>
-              <p class="mb-4"><a href="#">idBisid.id</a></p>
+              <p class="mb-4"><a href="">idBisid.id</a></p>
               <p class="mb-0 font-weight-bold">Chat Dengan Kami</p>
               <a href="<?=base_url()?>/user/chatting"><img src="<?=base_url()?>/assets/user2/images/chat.png" style="width:50px;heigh:50px;margin-top:10px;"></a>
             </div>

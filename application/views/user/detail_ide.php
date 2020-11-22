@@ -48,7 +48,7 @@
     <div class="unit-5 overlay" style="background-image: url(<?php echo base_url('assets/user2/images/hero_bg_2.jpg')?>);">
       <div class="container text-center">
         <h2 class="mb-0">Detail Ide Bisnis</h2>
-        <p class="mb-0 unit-6"><a href="<?=base_url()?>/user/index">Beranda</a> <span class="sep">></span> <span>Detail Ide Bisnis</span></p>
+        <p class="mb-0 unit-6"><a href="<?=base_url()?>user/index">Beranda</a> <span class="sep">></span> <span>Detail Ide Bisnis</span></p>
       </div>
     </div>
 
@@ -80,8 +80,15 @@
           <!-- DESKRIPSI -->
               <p><?= $ide_bisnis['deskripsi'];?></p>
               <div class="ml-auto">
-                <a href="#" class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span><?= $ide_bisnis['suka'];?></a>
-                <a href="#" class="btn btn-primary py-2">Tambahkan Ke Favorit</a>
+                <a href="<?=base_url()?>user/sukaiIde/<?= $ide_bisnis['id_idebisnis'];?>/<?= $ide_bisnis['suka']+1;?>" class="btn btn-secondary rounded-circle btn-favorite text-gray-500">
+                  <span class="icon-heart"></span><?= $ide_bisnis['suka'];?>
+                </a>
+                <?php if ($fav['fav']!=0) :?>
+                  <a href="<?=base_url()?>user/hapusFav/<?= $ide_bisnis['id_idebisnis'];?>" class="btn btn-primary py-2">Hapus dari Favorit</a>
+                <?php else: ?>
+                  <a href="<?=base_url()?>user/favoritIde/<?= $ide_bisnis['id_idebisnis'];?>" class="btn btn-primary py-2">Tambahkan ke Favorit</a>
+                <?php endif; ?>
+                
               </div>
             </div>
           </div>
