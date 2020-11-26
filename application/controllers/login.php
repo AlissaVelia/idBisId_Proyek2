@@ -160,7 +160,7 @@
                 $this->load->view('template/login/footer_login');
             }
             else {
-                $this->login_model->register_user();
+                $this->login_model->register_user(); 
                 redirect('login/index','refresh');
             }
         }
@@ -173,6 +173,8 @@
         }
 
         public function proses_register_lembaga() {
+            if($this->input->post('submit'))
+			{
             $data['title'] = 'Register Lembaga Pelatihan - idBisid';
 
             $this->form_validation->set_rules('namalembaga', 'Nama Lembaga', 'required');
@@ -185,14 +187,46 @@
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi Lembaga', 'required');
 
-            if ($this->form_validation->run() == FALSE) {
-                $this->load->view('template/login/header_login',$data);
-                $this->load->view('login/register_lembaga',$data);
-                $this->load->view('template/login/footer_login');
-            } else {
-                $this->login_model->register_lembaga();
-                redirect('login/login_lembaga','refresh');
+        //     if ($this->form_validation->run() == FALSE) {
+        //         $this->load->view('template/login/header_login',$data);
+        //         $this->load->view('login/register_lembaga',$data);
+        //         $this->load->view('template/login/footer_login');
+        //     } else {
+        //         $this->login_model->register_lembaga();
+        //         redirect('login/login_lembaga','refresh');
+        //     }
+        //  }
+
+            if ($this->form_validation->run() == TRUE) {
+                //konfigurasi upload file
+                $config['upload_path'] 		= './upload/materi';
+                $config['allowed_types']	= 'gif|jpg|png|pdf|docx';
+                $config['max_size']			= 5000;
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('surat_lembaga, foto_lembaga')) {
+
+                    if ($this->login_model->register_lembaga($this->upload->data()) == TRUE) {
+                        $this->session->set_flashdata('notif', 'Registrasi berhasil!');
+                        redirect('login/login_lembaga','refresh');
+                    } else {
+                        $this->session->set_flashdata('notif', 'Registrasi gagal!');
+                        redirect('lembaga/register_lembaga','refresh');
+                    }
+                } else {
+                    $this->session->set_flashdata('notif', $this->upload->display_errors());
+                    redirect('login/register_lembaga','refresh');
+                }
+
+            } 
+                else{
+                    $this->session->set_flashdata('notif', validation_errors());
+                    redirect('login/register_lembaga','refresh');
+                }
             }
+            9930
+
         }
+
     }
 ?>

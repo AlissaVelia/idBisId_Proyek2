@@ -237,10 +237,11 @@ class user extends CI_Controller {
     public function detail_pelatihan($id_pelatihan) {
         $data['title'] = 'Daftar Pelatihan - idBisid';
         $data['pelatihan']=$this->user_model->tampilDetailPelatihan($id_pelatihan);
+        $data['user_pelatihan']=$this->user_model->tampilDetailUserPelatihan($id_pelatihan);
         $this->load->view('template/user/header_user',$data);
         $this->load->view('user/detail_pelatihan',$data);
         $this->load->view('template/user/footer_user');
-    }
+    } 
 
     public function materi_pelatihan() {
         $data['title'] = 'Materi - idBisid';
@@ -433,7 +434,30 @@ class user extends CI_Controller {
         $this->load->view('template/user/header_invoice',$data);
         $this->load->view('user/invoice',$data);
     }
+
+    public function tambah_user_pelatihan() {
+        
+            $this->load->library('form_validation');
+            
+            $this->form_validation->set_rules('id_user', 'id_user', 'required');
+            $this->form_validation->set_rules('id_pelatihan', 'id_pelatihan', 'required');
+            $this->form_validation->set_rules('status_pembayaran', 'status_pembayaran', 'required');
+            $this->form_validation->set_rules('status_pelatihan', 'status_pelatihan', 'required');
+            $this->form_validation->set_rules('bukti_pembayaran', 'bukti_pembayaran', 'required');
+
+            if ($this->form_validation->run()==TRUE){
+                $this->user_model->tambah_user_pelatihan();
+                $this->session->set_flashdata('flash-data','ditambahkan');
+                redirect('user/profil_user','refresh');
+                
+            }else{
+                redirect('user/detail_pelatihan','refresh');
+            }
+       
+    }
+
 }
+
 
 /* End of file user.php */
 

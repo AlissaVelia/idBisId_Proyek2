@@ -56,20 +56,20 @@
                     <div class="row form-group mb-5">
                       <div class="col-md-12 mb-3 mb-md-0">
                         <label class="font-weight-bold" for="fullname">Unggah Logo Lembaga</label>
-                        <input type="file" id="fullname" class="form-control" name="surat_lembaga">
+                        <input type="file"  class="form-control" name="surat_lembaga">
                         <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                       </div>
                     </div>
                     <div class="row form-group mb-5">
                       <div class="col-md-12 mb-3 mb-md-0">
                         <label class="font-weight-bold" for="fullname">Unggah Surat Berdirinya Lembaga</label>
-                        <input type="file" id="fullname" class="form-control" name="foto_lembaga">
+                        <input type="file" class="form-control" name="foto_lembaga">
                         <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                       </div>
                     </div>
 					          <br>
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block">Register</button>
+                      <input type="submit" value="submit" class="btn btn-primary btn-block">
                     </div>
                   </form>
                   <hr>

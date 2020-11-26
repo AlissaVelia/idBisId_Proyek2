@@ -52,6 +52,57 @@
       </div>
     </div>
 
+
+<!-- POP UP PELATIHAN GRATIS  -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="<?php echo base_url('index.php/user/tambah_user_pelatihan'); ?>" method="post" enctype="multipart/form-data" >
+
+          <div class="modal-body">
+          <div class="form-group">
+                        
+                  <div class="form-group">
+                      <input type="text" name="id_user" value="<?php echo $this->session->userdata('id_user') ?>" class="form-control" hidden> 
+                   </div>
+                    <div class="form-group">
+                      <input type="text" name="id_pelatihan" value="<?= $pelatihan['id_pelatihan'];?>" class="form-control" hidden> 
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="status_pembayaran" value="gratis" class="form-control" hidden> 
+                   </div>
+                   <div class="form-group">
+                      <input type="text" name="status_pelatihan" value="progress" class="form-control" hidden> 
+                   </div>
+                   <div class="form-group">
+                      <input type="text" name="bukti_pembayaran" value="gratis" class="form-control" hidden> 
+                   </div>
+                   
+                    <h4 style="text-align:center;"><img src="<?= base_url()?>/assets/user2/images/ceklis.png" height="90" width="90" > 
+                    <br><br> Apakah Anda Yakin Akan Mengikuti Kelas Pelatihan Ini ? </h4>
+                          
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+            <input type="submit" value="Submit" class="btn btn-primary">
+          </div>
+        </div>
+        </form>
+     
+          </div>
+        </div>
+       
+      </div>
+    </div>
+
+
     <!-- ISI DETAIL IDE -->
     <div class="site-section bg-light">
       <div class="container">
@@ -62,20 +113,42 @@
               <div class="mb-4 mb-md-5 mr-5">
                <div class="job-post-item-header d-flex align-items-center">
                  <h2 class="mr-3 text-black h4"><?= $pelatihan['nama_pelatihan'];?></h2>
+             <button class="btn btn-warning sm"><?= $pelatihan['pembayaran'];?> 
+              <?php if ($pelatihan['pembayaran']=="Berbayar"){?>
+                Rp.<?= $pelatihan['harga'];?>
+              <?php }?> 
+              </button>
+               <?php if ($user_pelatihan['status_pelatihan']=="progress"){?>
+                - <button class="btn btn-primary sm" >Progress</button>
+                 <?php }?>
+                 <?php if ($user_pelatihan['status_pelatihan']=="finish"){?>
+                  <button class="btn btn-primary sm">Progress</button>
+                 <?php }?>
+              
                  <!-- <div class="badge-wrap">
                   <span class="bg-danger text-white badge py-2 px-4">Desain</span>
                  </div> -->
                </div>
 
           <!-- DESKRIPSI -->
-              <p><?= $pelatihan['deskripsi'];?></p>
+              <p><?= $pelatihan['deskripsi'];?></p> 
+             
               <div class="ml-auto">
                 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-primary py-2" onclick="ikuti()">Ikuti Pelatihan -></btton>
+                <?php if (($pelatihan['pembayaran']=="Gratis") && (empty($user_pelatihan))){?>
+                  <button class="btn btn-primary py-2" data-toggle="modal" data-target="#exampleModalScrollable" id="#modalScroll" >Ikuti Pelatihan</button>
+                 <?php }?> 
+                 <?php if ($pelatihan['pembayaran']=="Berbayar" && (empty($user_pelatihan))){?>
+                  <button class="btn btn-primary py-2" onclick="ikuti()">Ikuti Pelatihan</button>
+                 <?php }?> 
+                 
+
+                 
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+

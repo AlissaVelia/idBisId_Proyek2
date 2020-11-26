@@ -104,22 +104,46 @@
             }
         }
 
-        function register_lembaga() {
-            $this->id_lembaga = uniqid();
-            $data = [
-                "nama_lembaga" => $this->input->post('namalembaga', true),
-                "penanggungjawab" => $this->input->post('penanggungjawab', true),
-                "alamat" => $this->input->post('alamat', true),
-                "no_ktp" => $this->input->post('noktp', true),
-                "no_telp" => $this->input->post('telepon', true),
-                "email" => $this->input->post('email', true),
-                "deskripsi" => $this->input->post('deskripsi', true),
-                "username" => $this->input->post('username', true),
-                "password" => $this->input->post('password', true),
-                "surat_lembaga" => $this->uploadSuratLembaga(),
-                "logo_lembaga" => $this->uploadFotoLembaga()
-            ];
-            $this->db->insert('lembaga_pelatihan', $data);
+        function register_lembaga($surat, $logo) {
+            // $this->id_lembaga = uniqid();
+            // $data = [
+            //     "nama_lembaga" => $this->input->post('namalembaga', true),
+            //     "penanggungjawab" => $this->input->post('penanggungjawab', true),
+            //     "alamat" => $this->input->post('alamat', true),
+            //     "no_ktp" => $this->input->post('noktp', true),
+            //     "no_telp" => $this->input->post('telepon', true),
+            //     "email" => $this->input->post('email', true),
+            //     "deskripsi" => $this->input->post('deskripsi', true),
+            //     "username" => $this->input->post('username', true),
+            //     "password" => $this->input->post('password', true),
+            //     "surat_lembaga" => $this->uploadSuratLembaga(),
+            //     "logo_lembaga" => $this->uploadFotoLembaga()
+            // ];
+            // $this->db->insert('lembaga_pelatihan', $data);
+
+
+            	# code...
+			$data = array(
+                'nama_lembaga' => $this->input->post('namalembaga'),
+                'penanggungjawab' => $this->input->post('penanggungjawab'),
+                'alamat' => $this->input->post('alamat'),
+                'no_ktp' => $this->input->post('noktp'),
+                'no_telp' => $this->input->post('telepon'),
+                'email' => $this->input->post('email'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'username' => $this->input->post('username'),
+                'password' => $this->input->post('password'),
+                'surat_lembaga' => $surat['file_name'],
+                'logo_lembaga' => $logo['file_name']
+                
+			);
+			$this->db->insert('lembaga_pelatihan', $data);
+			if ($this->db->affected_rows() > 0) {
+				return TRUE;
+			} else {
+				return FALSE;
+            }
+            
         }
 
         function uploadSuratLembaga() {

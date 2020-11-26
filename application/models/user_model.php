@@ -136,8 +136,17 @@ class user_model extends CI_Model {
 
     public function tampilDetailPelatihan($id_pelatihan)
     {
-        # code...
-        return $this->db->get_where('pelatihan', ['id_pelatihan'=>$id_pelatihan])->row_array();
+        // $this->db->select('*');
+        // $this->db->from('pelatihan');
+        // $this->db->left_join('user_pelatihan', 'pelatihan.id_pelatihan  = user_pelatihan.id_pelatihan');
+        // $this->db->where('pelatihan.id_pelatihan', $id_pelatihan);
+        // return $this->db->get()->row_array();
+         return $this->db->get_where('pelatihan', ['id_pelatihan'=>$id_pelatihan])->row_array();
+    }
+    public function tampilDetailUserPelatihan($id_pelatihan)
+    {
+         
+         return $this->db->get_where('user_pelatihan', ['id_pelatihan'=>$id_pelatihan])->row_array();
     }
 
     public function tampilProfilUser($username)
@@ -274,6 +283,27 @@ class user_model extends CI_Model {
         $this->db->delete('favorit');
     }
 
+
+    public function tambah_user_pelatihan()
+	{
+		$data = array(
+				'id_user' => $this->input->post('id_user'),
+                'id_pelatihan' => $this->input->post('id_pelatihan'),
+                'status_pembayaran' => $this->input->post('status_pembayaran'),
+                'status_pelatihan' => $this->input->post('status_pelatihan'),
+                'bukti_pembayaran' => $this->input->post('bukti_pembayaran')
+                
+		
+			);
+
+		$this->db->insert('user_pelatihan', $data);
+		if($this->db->affected_rows() > 0){
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+    }
+    
 }
 
 /* End of file user_model.php */
