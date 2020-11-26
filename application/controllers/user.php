@@ -435,6 +435,8 @@ class user extends CI_Controller {
         $this->load->view('user/invoice',$data);
     }
 
+    
+
     public function tambah_user_pelatihan() {
         
             $this->load->library('form_validation');
@@ -455,6 +457,15 @@ class user extends CI_Controller {
             }
        
     }
+
+    public function detail_user_pelatihan($id_pelatihan) {
+        $data['title'] = 'Daftar Lembaga - idBisid';
+        $data['materi']=$this->user_model->tampilMateriPelatihanById($id_pelatihan);
+
+        $this->load->view('template/user/header_user',$data);
+        $this->load->view('user/detail_user_pelatihan',$data);
+        $this->load->view('template/user/footer_user');
+    } 
 
 }
 

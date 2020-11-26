@@ -303,7 +303,13 @@ class user_model extends CI_Model {
 			return FALSE;
 		}
     }
-    
+    public function tampilMateriPelatihanById($id_pelatihan)
+    {
+        $this->db->select('*');
+        $this->db->from('materi');
+        $this->db->where('id_pelatihan', $id_pelatihan);
+        return $this->db->get()->result_array();
+    }
 }
 
 /* End of file user_model.php */

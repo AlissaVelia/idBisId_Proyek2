@@ -224,7 +224,6 @@
                     redirect('login/register_lembaga','refresh');
                 }
             }
-            9930
 
         }
 
