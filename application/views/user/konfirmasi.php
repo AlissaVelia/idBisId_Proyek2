@@ -48,7 +48,7 @@
     <div class="unit-5 overlay" style="background-image: url(<?php echo base_url('assets/user2/images/hero_bg_2.jpg')?>);">
       <div class="container text-center">
         <h2 class="mb-0">- Konfirmasi Data Diri Anda -</h2>
-        <p class="mb-0 unit-6"><a href="<?=base_url()?>/user/index">Beranda</a> <span class="sep">></span> <a href="<?=base_url()?>/user/daftar_pelatihan">Daftar Pelatihan</a> <span class="sep">></span> <a href="<?=base_url()?>/user/detail_pelatihan">Detail Pelatihan</a> <span class="sep">></span> <span>Konfirmasi Data Diri</span></p>
+        <p class="mb-0 unit-6"><a href="<?=base_url()?>/user/index">Beranda</a> <span class="sep">></span> <a href="<?=base_url()?>/user/daftar_pelatihan">Daftar Pelatihan</a> <span class="sep">></span> <a href="<?=base_url()?>/user/detail_pelatihan/<?= $this->uri->segment(3);?>">Detail Pelatihan</a> <span class="sep">></span> <span>Konfirmasi Data Diri</span></p>
       </div>
     </div>
 
@@ -58,7 +58,7 @@
         <div class="row">
           <div class="col-md-12 col-lg-12 mb-5">
             <form action="#" class="p-5 bg-white" method="post" enctype="multipart/form-data">
-            <h4><strong><center>- Konfirmasi Data Diri Anda -</center></strong></h4><br>
+            <h4><strong><center>- PELATIHAN -</center></strong></h4><br>
             <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Nama Pelatihan</label>
@@ -77,32 +77,81 @@
                   <input type="text" id="fullname" class="form-control" value="21 Oktober 2020 20:05 WIB" disabled>
                 </div>
               </div>
+              </form>
+              <form action="<?php echo base_url('index.php/user/pembayaran'); ?>" method="post" enctype="multipart/form-data" class="p-5 bg-white">
+            
+              <input type="text" name="id_user" class="form-control" value="<?php echo $this->session->userdata('id_user') ?>" hidden>
+              <input type="text" name="id_pelatihan" class="form-control" value="<?= $this->uri->segment(3);?>" hidden >
+              <input type="text" name="status_pembayaran" class="form-control" value="berbayar" hidden >
+              <input type="text" name="status_pelatihan" class="form-control" value="unconfirm" hidden>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Nama</label>
-                  <input type="text" id="fullname" class="form-control">
-                  <p><i>Pastikan isi data dengan benar. Nama akan dicantumkan dalam sertifikat</i></p>
+                  <label class="font-weight-bold" for="fullname">Pilih Bank</label>
+                  <br>
+                  <a class="btn btn-primary sm" data-toggle="modal" data-target="#bca">Bank BCA</a>
+                  - <a class="btn btn-warning sm" data-toggle="modal" data-target="#mandiri">Bank Mandiri</a>
+                  - <a class="btn btn-danger sm" data-toggle="modal" data-target="#bni">Bank BNI</a>
                 </div>
               </div>
+    
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Email Aktif</label>
-                  <input type="email" id="fullname" class="form-control">
+                  <label class="font-weight-bold" for="fullname">Bukti Pembayaran</label>
+                  <input type="file" name="bukti_pembayaran" class="form-control">
                 </div>
               </div>
-              <div class="row form-group">
-                <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Telepon Aktif</label>
-                  <input type="text" id="fullname" class="form-control">
-                </div>
-              </div>
+              
               <div class="row form-group">
                 <div class="col-md-12">
-                  <br><center><button class="btn btn-primary py-2" onclick="konfirmasi()">Konfirmasi</btton></center>
+                  <br><center><input type="submit" name="submit" value="Konfirmasi" class="btn btn-primary"></center>
                 </div>
               </div>
             </form>
           </div>
         </div>
+      </div>
+    </div>
+
+
+    <!-- BCA -->
+    <div class="modal fade" id="bca" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-body">
+      <br><br><br>
+            <center><img src="<?= base_url()?>/assets/bca.png" height="300" width="500" > </center>
+            <center>
+            <a class="btn btn-primary" href="<?=base_url()?>user/konfirmasi/<?= $this->uri->segment(3);?>">Close</a>
+            </center>
+          
+            </div> 
+      </div>
+    </div>
+
+
+     <!-- Mandiri -->
+     <div class="modal fade" id="mandiri" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-body">
+      <br><br><br>
+            <center><img src="<?= base_url()?>/assets/mandiri.png" height="300" width="500" > </center>
+            <center>
+            <a class="btn btn-warning" href="<?=base_url()?>user/konfirmasi/<?= $this->uri->segment(3);?>">Close</a>
+            </center>
+          
+            </div> 
+      </div>
+    </div>
+
+     <!-- BNI -->
+     <div class="modal fade" id="bni" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-body">
+      <br><br><br>
+            <center><img src="<?= base_url()?>/assets/bni.png" height="300" width="500" > </center>
+            <center>
+            <a class="btn btn-danger" href="<?=base_url()?>user/konfirmasi/<?= $this->uri->segment(3);?>">Close</a>
+            </center>
+          
+            </div> 
       </div>
     </div>

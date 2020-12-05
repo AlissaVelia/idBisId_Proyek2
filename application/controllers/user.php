@@ -492,9 +492,44 @@ class user extends CI_Controller {
                 $this->user_model->tambah_penilaian();
             redirect('user/daftar_lembaga', 'refresh');
         }
+    }
 
-   
-}
+        public function pembayaran(){
+            if($this->input->post('submit'))
+            {
+                $this->form_validation->set_rules('id_user', 'id_user', 'required');
+                $this->form_validation->set_rules('id_pelatihan', 'id_pelatihan', 'required');
+                $this->form_validation->set_rules('status_pembayaran', 'status_pembayaran', 'required');
+                $this->form_validation->set_rules('status_pelatihan', 'status_pelatihan', 'required');
+
+
+            if ($this->form_validation->run() == TRUE) {
+                //konfigurasi upload file
+                $config['upload_path'] 		= './upload/bukti';
+                $config['allowed_types']	= 'gif|jpg|png|pdf|docx';
+                $config['max_size']			= 5000;
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('bukti_pembayaran')) {
+
+                    if ($this->user_model->pembayaran($this->upload->data()) == TRUE) {
+                        redirect('user/daftar_pelatihan','refresh');
+                    } else {
+                        $this->session->set_flashdata('notif', 'Tambah Materi gagal!');
+                        redirect('user/index','refresh');
+                    }
+                } else {
+                    $this->session->set_flashdata('notif', $this->upload->display_errors());
+                    redirect('lembaga/kategori','refresh');
+                }
+
+            }
+            else{
+                $this->session->set_flashdata('notif', validation_errors());
+                redirect('user/ide_bisnis','refresh');
+            }
+        }
+    }
 
     
    

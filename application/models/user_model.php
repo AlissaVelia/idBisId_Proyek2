@@ -335,6 +335,25 @@ class user_model extends CI_Model {
         }
     }
 
+    
+	function pembayaran($bukti_pembayaran) {
+
+        # code...
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'id_pelatihan' => $this->input->post('id_pelatihan'),
+            'status_pembayaran' => $this->input->post('status_pembayaran'),
+            'status_pelatihan' => $this->input->post('status_pelatihan'),
+            'bukti_pembayaran' => $bukti_pembayaran['file_name']
+        );
+        $this->db->insert('user_pelatihan', $data);
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+}
+
 
     
 }

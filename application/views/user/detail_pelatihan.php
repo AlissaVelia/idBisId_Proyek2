@@ -90,8 +90,9 @@
           </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-            <input type="submit" value="Submit" class="btn btn-primary">
+            
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Tidak</button>
+            <input type="submit" value="Ya" class="btn btn-primary">
           </div>
         </div>
         </form>
@@ -120,10 +121,12 @@
               </button>
                <?php if ($user_pelatihan['status_pelatihan']=="progress"){?>
                 - <button class="btn btn-primary sm" >Progress</button>
-                 <?php }?>
+                <?php }?>
                  <?php if ($user_pelatihan['status_pelatihan']=="finish"){?>
-                  <button class="btn btn-primary sm">Progress</button>
+                  <button class="btn btn-primary sm">Finish</button>
                  <?php }?>
+
+                 
               
                  <!-- <div class="badge-wrap">
                   <span class="bg-danger text-white badge py-2 px-4">Desain</span>
@@ -140,8 +143,18 @@
                   <button class="btn btn-primary py-2" data-toggle="modal" data-target="#exampleModalScrollable" id="#modalScroll" >Ikuti Pelatihan</button>
                  <?php }?> 
                  <?php if ($pelatihan['pembayaran']=="Berbayar" && (empty($user_pelatihan))){?>
-                  <button class="btn btn-primary py-2" onclick="ikuti()">Ikuti Pelatihan</button>
+                  <a class="btn btn-primary py-2" href="<?=base_url()?>user/konfirmasi/<?= $pelatihan['id_pelatihan'];?>">Ikuti Pelatihan</a>
                  <?php }?> 
+                 <?php if ($user_pelatihan['status_pelatihan']=="progress"){?>
+                 <a href="<?=base_url()?>/user/detail_user_pelatihan/<?= $pelatihan['id_pelatihan'];?>"  class="btn btn-success"> Lihat Materi </a>
+                 <?php }?>
+                 <?php if ($user_pelatihan['status_pelatihan']=="confirm"){?>
+                 <a href="<?=base_url()?>/user/detail_user_pelatihan/<?= $pelatihan['id_pelatihan'];?>"  class="btn btn-success"> Status Menunggu </a>
+                 <?php }?>
+                 <?php if ($user_pelatihan['status_pelatihan']=="unconfirm"){?>
+                  <a class="btn btn-primary sm" data-toggle="modal" data-target="#tunggu">Lihat Materi</a>
+                <?php }?>
+
                  
 
                  
@@ -152,3 +165,16 @@
       </div>
     </div>
 
+    <!-- tunngu -->
+    <div class="modal fade" id="tunggu" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-body">
+      <br><br><br>
+            <center><img src="<?= base_url()?>/assets/tunggu.png" height="300" width="470" > </center>
+            <center>
+            <a class="btn btn-primary" href="<?=base_url()?>user/detail_pelatihan/<?= $this->uri->segment(3);?>">Close</a>
+            </center>
+          
+            </div> 
+      </div>
+    </div>
