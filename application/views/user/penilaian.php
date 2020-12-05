@@ -48,7 +48,7 @@
     <div class="unit-5 overlay" style="background-image: url(<?php echo base_url('assets/user2/images/hero_bg_2.jpg')?>);">
       <div class="container text-center">
         <h2 class="mb-0">- Rating & Review -</h2>
-        <p class="mb-0 unit-6"><a href="<?=base_url()?>/user/index">Beranda</a> <span class="sep">></span> <a href="<?=base_url()?>/user/profil_user">Profil Kamu</a><span class="sep">></span><span>Rating & Review</span></p>
+        <p class="mb-0 unit-6"><a href="<?=base_url()?>/user/index">Beranda</a> <span class="sep">></span> <a href="<?=base_url()?>user/profil_user/<?= $this->session->userdata('user')?>">Profil Kamu</a><span class="sep">></span><span>Rating & Review</span></p>
       </div>
     </div>
 
@@ -57,39 +57,75 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-12 mb-5">
-            <form action="#" class="p-5 bg-white" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('index.php/user/tambah_penilaian'); ?>" class="p-5 bg-white" method="post">
             <h4><strong><center>- Seberapa Puaskah Kamu -</center></strong></h4><br>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Nama</label>
-                  <input type="text" id="fullname" class="form-control">
+                  <input type="text" name="id_user" value="<?= $this->session->userdata('id_user')?>" class="form-control" hidden>
+                  <input type="text" name="id_lembaga" value="<?= $pelatihan['id_lembaga'];?>" class="form-control" hidden>
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Rating Kamu</label>
-	<div class="rating rating2"><!--
-		--><a href="#5" title="Give 5 stars">★</a><!--
-		--><a href="#4" title="Give 4 stars">★</a><!--
-		--><a href="#3" title="Give 3 stars">★</a><!--
-		--><a href="#2" title="Give 2 stars">★</a><!--
-		--><a href="#1" title="Give 1 star">★</a>
-	</div>
-                </div>
-              </div>
+                  <br><br>
+            <center>
+            <div class="rating">
+            <label>
+              <input type="radio" name="rating" value="60" />
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="70" />
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="80" />
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>   
+            </label>
+            <label>
+              <input type="radio" name="rating" value="90" />
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="100" />
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            </div>
+            </center>
+                  
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                   <label class="font-weight-bold" for="fullname">Review</label>
-                  <textarea name="deskripsi" class="form-control" id="" cols="30" rows="5"></textarea>
+                  <textarea name="review" class="form-control" id="" cols="30" rows="5"></textarea>
                 </div>
               </div>
               <div class="row form-group">
+             
                 <div class="col-md-12">
-                  <center><input type="submit" value="Kirim" class="btn btn-primary  py-2 px-5"></center>
+                <center><input type="submit" value="submit" class="btn btn-primary  py-2 px-5">   </center>
                 </div>
+             
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+    $(':radio').change(function() {
+  console.log('New star rating: ' + this.value);
+});
+    </script>
+

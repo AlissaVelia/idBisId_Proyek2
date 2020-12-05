@@ -415,12 +415,18 @@ class user extends CI_Controller {
         $this->load->view('user/chatting',$data);
     }
 
+ 
     public function penilaian() {
         $data['title'] = 'Rating & Review - idBisid';
+        
+        $data['pelatihan']=$this->user_model->tampilDetailPelatihan($this->uri->segment(3)); 
         $this->load->view('template/user/header_rating',$data);
         $this->load->view('user/penilaian',$data);
         $this->load->view('template/user/footer_user');
     }
+
+
+
 
     public function konfirmasi() {
         $data['title'] = 'Konfirmasi Pembayaran - idBisid';
@@ -450,10 +456,10 @@ class user extends CI_Controller {
             if ($this->form_validation->run()==TRUE){
                 $this->user_model->tambah_user_pelatihan();
                 $this->session->set_flashdata('flash-data','ditambahkan');
-                redirect('user/profil_user','refresh');
+                redirect('user/daftar_pelatihan','refresh');
                 
             }else{
-                redirect('user/detail_pelatihan','refresh');
+                redirect('user/daftar_pelatihan','refresh');
             }
        
     }
@@ -466,8 +472,35 @@ class user extends CI_Controller {
         $this->load->view('user/detail_user_pelatihan',$data);
         $this->load->view('template/user/footer_user');
     } 
+    public function tambah_penilaian() {
+        if($this->input->post('submit'))
+        {
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('id_user', 'id_user', 'required');
+            $this->form_validation->set_rules('id_lembaga', 'id_lembaga', 'required');
+            $this->form_validation->set_rules('rating', 'rating', 'required');
+            $this->form_validation->set_rules('review', 'review', 'required');
 
+            if ($this->form_validation->run()==TRUE){
+                redirect('user/daftar_pelatihan','refresh');
+                
+            }else{
+                redirect('user/index', 'refresh');
+            }
+        }else{
+            
+                $this->user_model->tambah_penilaian();
+            redirect('user/daftar_lembaga', 'refresh');
+        }
+
+   
 }
+
+    
+   
+}
+
+
 
 
 /* End of file user.php */

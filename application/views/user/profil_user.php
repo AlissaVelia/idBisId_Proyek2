@@ -146,7 +146,7 @@
               </div>
               <div class="unit-3-body">
                 <p><a href="<?=base_url()?>/user/detail_pelatihan/<?= $pl['id_pelatihan'];?>" style="color:#b3b3b3;"><?= $pl['desc'];?></a></p>
-                <p style="margin-left: 160px;"><a href="<?=base_url()?>/user/penilaian" style="color:#4d90fe;"><b>Beri Penilaian -></b></a></p>
+                <p style="margin-left: 160px;"><a href="<?=base_url()?>/user/penilaian/<?= $pl['id_pelatihan'];?>" style="color:#4d90fe;"><b>Beri Penilaian -></b></a></p>
               </div>
             </div>
           </div>

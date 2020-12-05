@@ -122,6 +122,12 @@ class user_model extends CI_Model {
         $this->db->select('nama_lembaga, alamat');
         $this->db->from('lembaga_pelatihan');
         return $this->db->get()->result_array();
+
+        // modif ve
+        // $this->db->select('nama_lembaga, alamat');
+        // $this->db->from('pelatihan');
+        // $this->db->join('lembaga_pelatihan', 'pelatihan.id_lembaga = lembaga_pelatihan.id_lembaga');
+        // return $this->db->get()->result_array();
     }
 
     public function tampilDetailIdeBisnis($id_idebisnis)
@@ -310,6 +316,27 @@ class user_model extends CI_Model {
         $this->db->where('id_pelatihan', $id_pelatihan);
         return $this->db->get()->result_array();
     }
+    public function tambah_penilaian()
+    {
+        $data = array(
+                'id_user' => $this->input->post('id_user'),
+                'id_lembaga' => $this->input->post('id_lembaga'),
+                'rating' => $this->input->post('rating'),
+                'review' => $this->input->post('review')
+                
+        
+            );
+
+        $this->db->insert('review', $data);
+        if($this->db->affected_rows() > 0){
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+
+    
 }
 
 /* End of file user_model.php */
