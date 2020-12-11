@@ -170,7 +170,53 @@ class lembaga_model extends CI_Model {
         ->get('materi')
         ->result();
 	}
+	public function getLembagaById($id) {
+        $query = $this->db->get_where('lembaga_pelatihan', array('id_lembaga' => $id));
+        return $query->result_array();
+	}
+	
+	public function edit_data_lembaga($logo, $surat) {
+		$post = $this->input->post();
+		$this->id_lembaga = $post["id_lembaga"];
+		$this->nama_lembaga = $post["nama_lembaga"];
+		$this->alamat = $post["alamat"];
+		$this->no_telp = $post["no_telp"];
+		$this->penanggungjawab = $post["penanggungjawab"];
+		$this->no_ktp = $post["no_ktp"];
+		$this->username = $post["username"];
+		$this->password = $post["password"];
+		$this->deskripsi = $post["deskripsi"];
+		$this->logo_lembaga = $logo['file_name'];
+		$this->surat_lembaga = $surat["file_name"];
+		
+		$this->db->update('lembaga_pelatihan', $this, array('id_lembaga' => $post['id_lembaga']));
+	}
 
+	// public function upload_logo_lembaga() {
+	// 	$config['upload_path'] = './upload/lembaga/foto_lembaga/';
+    //     $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    //     $config['file_name'] = $this->id_lembaga;
+    //     $config['overwrite'] = true;
+
+    //     $this->upload->initialize($config);
+    //     $this->load->library('upload',$config);
+    //     if($this->upload->do_upload('logo_lembaga')) {
+    //         return $this->upload->data("file_name");
+    //     }
+	// }
+
+	// public function upload_surat_lembaga() {
+	// 	$config['upload_path'] = './upload/lembaga/surat_lembaga/';
+	// 	$config['allowed_types'] = 'gif|jpg|png|jpeg';
+	// 	$config['file_name'] = $this->id_lembaga;
+	// 	$config['overwrite'] = true;
+
+	// 	$this->upload->initialize($config);
+	// 	$this->load->library('upload', $config);
+	// 	if($this->upload->do_upload('surat_lembaga')) {
+	// 		return $this->upload->data("file_name");
+	// 	}
+	// }
 
 }
 

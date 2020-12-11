@@ -137,7 +137,7 @@ class user extends CI_Controller {
 
         if ($this->form_validation->run() == TRUE) {
             //konfigurasi upload file
-            $config['upload_path'] 		= './uploads/';
+            $config['upload_path'] 		= './upload/';
             $config['allowed_types']	= 'gif|jpg|png';
             $config['max_size']			= 2000;
             $this->load->library('upload', $config);

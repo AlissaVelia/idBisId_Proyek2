@@ -2,11 +2,11 @@
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon">
           <img src="<?= base_url()?>/assets/admin/img/logo/logo2.png">
         </div>
-        <div class="sidebar-brand-text mx-3">Hi,  </div>
+        <!-- <div class="sidebar-brand-text mx-3">Hi,  </div> -->
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
@@ -19,7 +19,7 @@
         Lembaga Pelatihan 
       </div>
         <li class="nav-item">
-        <a class="nav-link" href="<?=base_url();?>lembaga/data_lembaga"> 
+        <a class="nav-link" href="<?= base_url();?>lembaga/data_lembaga/<?=$this->session->userdata('id_lembaga');?>"> 
           <i class="fas fa-fw fa-palette"></i>
           <span>Lengkapi Data Lembaga</span>
         </a>

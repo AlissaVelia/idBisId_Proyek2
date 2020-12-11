@@ -19,7 +19,7 @@
                   <form action="<?=base_url('login/proses_register_lembaga')?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                       <label>Nama Lembaga</label>
-                      <input type="text" class="form-control" id="exampleInputFirstName" name="namalembaga">
+                      <input type="text" class="form-control" id="exampleInputFirstName" name="nama_lembaga">
                     </div>
                     <div class="form-group">
                       <label>Alamat</label>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                       <label>Telepon</label>
-                      <input type="text" class="form-control" id="exampleInputEmail" name="telepon">
+                      <input type="text" class="form-control" id="exampleInputEmail" name="no_telp">
                     </div>
                     <div class="form-group">
                       <label>Penanggungjawab Lembaga</label>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                       <label>Nomor KTP Penanggungjawab</label>
-                      <input type="text" class="form-control" id="exampleInputLastName" name="noktp">
+                      <input type="text" class="form-control" id="exampleInputLastName" name="no_ktp">
                     </div>
                     <div class="form-group">
                       <label>Username</label>
@@ -56,14 +56,14 @@
                     <div class="row form-group mb-5">
                       <div class="col-md-12 mb-3 mb-md-0">
                         <label class="font-weight-bold" for="fullname">Unggah Logo Lembaga</label>
-                        <input type="file"  class="form-control" name="surat_lembaga">
+                        <input type="file"  class="form-control" name="logo_lembaga">
                         <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                       </div>
                     </div>
                     <div class="row form-group mb-5">
                       <div class="col-md-12 mb-3 mb-md-0">
                         <label class="font-weight-bold" for="fullname">Unggah Surat Berdirinya Lembaga</label>
-                        <input type="file" class="form-control" name="foto_lembaga">
+                        <input type="file" class="form-control" name="surat_lembaga">
                         <p>Format .jpg dan .png Maks. Ukuran : 500KB</p>
                       </div>
                     </div>

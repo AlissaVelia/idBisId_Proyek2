@@ -173,16 +173,16 @@
         }
 
         public function proses_register_lembaga() {
-            if($this->input->post('submit'))
-			{
+            // if($this->input->post('submit'))
+			// {
             $data['title'] = 'Register Lembaga Pelatihan - idBisid';
 
-            $this->form_validation->set_rules('namalembaga', 'Nama Lembaga', 'required');
+            $this->form_validation->set_rules('nama_lembaga', 'Nama Lembaga', 'required');
             $this->form_validation->set_rules('alamat', 'Alamat', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required');
-            $this->form_validation->set_rules('telepon', 'Telepon', 'required');
+            $this->form_validation->set_rules('no_telp', 'Telepon', 'required');
             $this->form_validation->set_rules('penanggungjawab', 'Penanggungjawab', 'required');
-            $this->form_validation->set_rules('noktp', 'Nomor KTP', 'required');
+            $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'required');
             $this->form_validation->set_rules('username', 'Username', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi Lembaga', 'required');
@@ -199,14 +199,14 @@
 
             if ($this->form_validation->run() == TRUE) {
                 //konfigurasi upload file
-                $config['upload_path'] 		= './upload/materi';
+                $config['upload_path'] 		= './upload/lembaga';
                 $config['allowed_types']	= 'gif|jpg|png|pdf|docx';
                 $config['max_size']			= 5000;
                 $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('surat_lembaga, foto_lembaga')) {
+                if ($this->upload->do_upload('surat_lembaga', 'logo_lembaga')) {
 
-                    if ($this->login_model->register_lembaga($this->upload->data()) == TRUE) {
+                    if ($this->login_model->register_lembaga($this->upload->data(), $this->upload->data()) == TRUE) {
                         $this->session->set_flashdata('notif', 'Registrasi berhasil!');
                         redirect('login/login_lembaga','refresh');
                     } else {
@@ -223,7 +223,7 @@
                     $this->session->set_flashdata('notif', validation_errors());
                     redirect('login/register_lembaga','refresh');
                 }
-            }
+            // }
 
         }
 

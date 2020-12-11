@@ -22,14 +22,65 @@ class lembaga extends CI_Controller {
         //$this->load->view('template/lembaga/footer_lembaga');
         
     }
-    public function data_lembaga()
+    public function data_lembaga($id)
     {
-        $data['title'] = 'Dashboard - idBisid';
+        $data = array(
+            'title' => 'Data Lembaga Pelatihan',
+            'lembaga_pelatihan' => $this->lembaga_model->getLembagaById($id)
+        );
         $this->load->view('template/lembaga/header_lembaga',$data);
         $this->load->view('template/lembaga/sidebar_lembaga',$data);
         $this->load->view('lembaga/data_lembaga',$data);
-        //$this->load->view('template/lembaga/footer_lembaga');
     }
+
+    public function edit_data_lembaga($id) {
+        $data = array(
+            'title' => 'Edit Data Lembaga',
+            'lembaga_pelatihan' => $this->lembaga_model->getLembagaById($id)
+        );
+
+        $this->form_validation->set_rules('nama_lembaga', 'Nama Lembaga', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('no_telp', 'Telepon', 'required');
+        $this->form_validation->set_rules('penanggungjawab', 'Nama Penanggungjawab', 'required');
+        $this->form_validation->set_rules('no_ktp', 'Nomor KTP Penanggungjawab', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+
+        if($this->form_validation->run()==TRUE) {
+            $config['upload_path'] = './upload/lembaga/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $this->load->library('upload', $config);
+
+            if($this->upload->do_upload('logo_lembaga','surat_lembaga')) {
+                if($this->lembaga_model->edit_data_lembaga($this->upload->data(), $this->upload->data()) == TRUE) {
+                    $this->session->set_flashdata('notif','Edit Berhasil');
+                    redirect('lembaga/data_lembaga/'.$this->input->post('id_lembaga'),'refresh');
+                }
+                else {
+                    redirect('lembaga/data_lembaga/'.$this->input->post('id_lembaga'),'refresh');
+                }
+            }
+            else {
+                $this->session->set_flashdata('notif', $this->upload->display_errors());
+                $this->load->view('template/lembaga/header_lembaga',$data);
+                $this->load->view('template/lembaga/sidebar_lembaga',$data);
+                $this->load->view('lembaga/edit_datalembaga',$data);
+            }
+        }
+        else {
+            $this->session->set_flashdata('notif', validation_errors());
+            $this->load->view('template/lembaga/header_lembaga',$data);
+            $this->load->view('template/lembaga/sidebar_lembaga',$data);
+            $this->load->view('lembaga/edit_datalembaga',$data);
+            // $this->lembaga_model->edit_data_lembaga($id);
+            // redirect('lembaga/data_lembaga/'.$this->input->post('id_lembaga'),'refresh');
+        }
+
+        
+    }
+
     public function kategori_pelatihan()
     {
         $id_lembaga = $this->session->userdata('id_lembaga');

@@ -105,7 +105,7 @@
         }
 
         function register_lembaga($surat, $logo) {
-            // $this->id_lembaga = uniqid();
+            $this->id_lembaga = uniqid();
             // $data = [
             //     "nama_lembaga" => $this->input->post('namalembaga', true),
             //     "penanggungjawab" => $this->input->post('penanggungjawab', true),
@@ -124,11 +124,11 @@
 
             	# code...
 			$data = array(
-                'nama_lembaga' => $this->input->post('namalembaga'),
+                'nama_lembaga' => $this->input->post('nama_lembaga'),
                 'penanggungjawab' => $this->input->post('penanggungjawab'),
                 'alamat' => $this->input->post('alamat'),
-                'no_ktp' => $this->input->post('noktp'),
-                'no_telp' => $this->input->post('telepon'),
+                'no_ktp' => $this->input->post('no_ktp'),
+                'no_telp' => $this->input->post('no_telp'),
                 'email' => $this->input->post('email'),
                 'deskripsi' => $this->input->post('deskripsi'),
                 'username' => $this->input->post('username'),

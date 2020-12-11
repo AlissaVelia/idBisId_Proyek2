@@ -171,9 +171,11 @@ data-target="#exampleModalScrollable" id="#modalScroll">Tambah Pelatihan</button
                         <input type="text" name="harga" id="harga" class="form-control" disabled>
                     </div>
                    
+
+
+
                     <form action="<?php echo base_url('index.php/lembaga/tambah_materi_by_id'); ?>" method="post" enctype="multipart/form-data">
-                    
-              
+                                 
                     <div class="form-group">
                         Judul
                         <input type="text" name="judul" class="form-control" >
